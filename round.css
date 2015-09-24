@@ -1,0 +1,55 @@
+
+.round-piece{
+	position: relative;
+	width: 25px;
+	max-width: 25px;
+	height: 25px;
+	max-height:25px;
+	padding: 0px;
+	margin: 0px;
+	border: 1px solid black;
+	border-radius: 25%;	
+	z-index: 5;
+	background-color: #ffe57e;
+}
+
+#round_1{
+	top:-2510px;
+	left: 50px;
+}
+#round_2{
+	top:-2510px;
+	left: 95px;
+}
+#round_3{
+	top:-2510px;
+	left: 140px;
+}
+#round_4{
+	top:-2510px;
+	left: 185px;
+}
+#round_5{
+	top:-2510px;
+	left: 230px;
+}
+#round_6{
+	top:-2510px;
+	left: 275px;
+}
+#round_7{
+	top:-2510px;
+	left: 323px;
+}
+#round_8{
+	top:-2510px;
+	left: 368px;
+}
+#round_9{
+	top:-2510px;
+	left: 413px;
+}
+#round_10{
+	top:-2510px;
+	left: 458px;
+}

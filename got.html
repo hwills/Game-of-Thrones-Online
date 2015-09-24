@@ -1,0 +1,2354 @@
+<!DOCTYPE html>
+<html lang = "en">
+<head><title>Game of Thrones The Board Game Online!</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+
+<link rel = "stylesheet" href = "layout.css" type = "text/css" >
+<link rel = "stylesheet" href = "castle.css" type = "text/css" >
+<link rel = "stylesheet" href = "supply.css" type = "text/css" >
+<link rel = "stylesheet" href = "wildlings.css" type = "text/css" >
+<link rel = "stylesheet" href = "round.css" type = "text/css" >
+<link rel = "stylesheet" href = "throne.css" type = "text/css" >
+<link rel = "stylesheet" href = "sword.css" type = "text/css" >
+<link rel = "stylesheet" href = "raven.css" type = "text/css" >
+<link rel = "stylesheet" href = "modal.css" type = "text/css" >
+
+
+<!-- Jquery -->
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+<script src= "bootstrap3/js/bootstrap.js"></script>
+<!-- Bootstrap -->
+<!-- Latest compiled and minified CSS -->
+<!-- <link rel="stylesheet" href="bootstrap3/css/bootstrap.min.css"> -->
+
+<!-- Optional theme -->
+<!-- <link rel="stylesheet" href=bootstrap3/css/bootstrap-theme.min.css"> -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+
+<h1 id="gameOver"></h1>
+<h2 id="gameOverInfo"></h2>
+
+<!-- super div to easily hide everything except info -->
+<div id="all">
+<h1 id="currentRound"></h1>
+<h2 id="roundInfo"></h2>
+<a href ="#instructions-modal" >INSTRUCTIONS</a>
+
+
+
+<div id="zones" class = "col-md-12">
+	<img src = "GoT.jpg" width = "1580" height = "800">
+
+	<div id ="w_fell" class = "zone-class"> OldTown <br><span class = "power">__</span><span class = "supply">__</span></div>
+	
+</div>
+
+<div id = "stark_castle_2" class = "piece"> </div>
+<div id = "lannister_castle_1" class = "piece"> </div>
+<div id = "martell_castle_1" class = "piece"> </div>
+<div id = "targaryen_castle_1" class = "piece"> </div>
+
+<div id = "stark_supply_2" class = "piece"> </div>
+<div id = "lannister_supply_3" class = "piece"> </div>
+<div id = "martell_supply_3" class = "piece"> </div>
+<div id = "targaryen_supply_3" class = "piece"> </div>
+
+<div id = "wildlings_0" class = "wild-piece"> </div>
+<div id = "round_1" class = "round-piece"> </div>
+
+<div id = "stark_throne_1" class = "throne-piece"> </div>
+<div id = "lannister_throne_2" class = "throne-piece"> </div>
+<div id = "martell_throne_3" class = "throne-piece"> </div>
+<div id = "targaryen_throne_4" class = "throne-piece"> </div>
+
+<div id = "stark_sword_1" class = "sword-piece"> </div>
+<div id = "lannister_sword_2" class = "sword-piece"> </div>
+<div id = "martell_sword_3" class = "sword-piece"> </div>
+<div id = "targaryen_sword_4" class = "sword-piece"> </div>
+
+<div id = "stark_raven_1" class = "raven-piece"> </div>
+<div id = "lannister_raven_2" class = "raven-piece"> </div>
+<div id = "martell_raven_3" class = "raven-piece"> </div>
+<div id = "targaryen_raven_4" class = "raven-piece"> </div>
+
+<div class="modal" id = "instructions-modal" >
+<div id="content">
+		<audio src = "Game of Thrones.mp3" loop></audio>
+		<a href="#close" title="Close" class="close">X</a>
+		<h2>Game of Thrones, The Board Game - Instructions</h2>
+<p>Rules:
+</br>
+The goal of the game is to be the first player to control seven zones with castles, or to be the player holding the most castles at the end of the 10th game round.
+</br>
+Each game round consist of 8 sub-rounds described as follows:
+</br>
+1.	Tile Placement
+</br>
+    a.	Each player takes turns (according to their order on the Throne Track) placing tiles on zone that they control. These tiles are of the form Name_starCost_combatPowerBonus.
+</br>
+b.	Raid
+</br>
+i.	Raids can be played on any zone you control
+</br>
+ii.	Raids can remove support, power, or other raid tiles played in adjacent zones
+</br>
+iii.	Raids placed on land can only effect adjacent land tiles
+</br>
+c.	Attack
+</br>
+i.	Attack tiles can be placed on any zone you control
+</br>
+ii.	Attacks are used to move armies from a zone into an adjacent zone (or a farther zone connected to the land zone the attack is placed on by a sea zone under your control)
+</br>
+1.	If the adjacent zone is unoccupied, the attacking player gains control of the new zone
+</br>
+2.	If the adjacent zone is occupied, the attacking player begins a battle with the player occupying the adjacent zone
+</br>
+iii.	Land cannot attack sea and sea cannot attack land
+</br>
+d.	Support
+</br>
+i.	A support can be played on any zone you control
+</br>
+ii.	Support allows you to lend aid to either the attacker or the defender of a battle occurring in an adjacent zone
+</br>
+iii.	Sea can support land, but land cannot support sea
+</br>
+e.	Power
+</br>
+i.	Power tiles can only be placed in land zones
+</br>
+ii.	Power give players more power tokens to bid during the bid round
+</br>
+iii.	From a tile players gain 1 power + the amount of power innate to the zone the tile is played on
+</br>
+f.	Defense
+</br>
+i.	Defense tiles give you additional combat strength in case your zone is attacked by another player
+</br>
+g.	Stars
+</br>
+i.	Players have a certain number of stars to use per turn based on their position on the raven track.
+</br>
+ii.	Stars allow players to play more tiles some of which are “better” versions of their similar non-star version.
+</br>
+2.	Reveal Round
+</br>
+a.	In the reveal round, the tiles each player has placed on the board are revealed for all players to see.
+</br>
+3.	Raid Round
+</br>
+a.	Every player who has placed a raid tile is asked to use a raid in turn order (again decided by the order on the Throne Track)
+</br>
+b.	Players may use one raid at a time and the round continues until all raids on the board have been used.
+</br>
+4.	Attack Round
+</br>
+a.	Every player who has placed an attack tile is asked to use an attack in turn order
+</br>
+b.	Players may use one attack at a time and the round continues until all attacks on the board have been used
+</br>
+c.	In the case that a battle occurs, adjacent players are asked to choose a side to support (if they decide to do so) and then each player in the battle is allowed to select a General to lead their battle giving them additional combat power
+</br>
+d.	Note Footmen are 1 combat power, knights are 2 combat power, boats are 1 combat power, and siege towers are 4 combat power when attacking a castle otherwise they are 0 combat power
+</br>
+e.	Order on the sword track decides ties in battle
+</br>
+f.	The army of a player who loses a battle dies
+</br>
+5.	Power Collection
+</br>
+a.	Players gain power tokens from all remaining power tiles on the board
+</br>
+6.	Mustering	(random chance of occurring or not)
+</br>
+a.	Players may summon new units in every area they control that has a castle. Castles give mustering power based on their size
+</br>
+b.	Boats cost 1 mustering power as do footmen while knights and siege towers cost 2 mustering power. A footman can be upgraded to a knight or a siege tower for 1 combat power.
+</br>
+7.	Bid (random chance of occurring or not)
+</br>
+a.	Players bid power on throne, sword and raven tracks. The player’s order on tracks are rearranged based on who bid more. Order on the throne track decides ties.
+</br>
+b.	The Throne decides turn order, ties in bidding on the tracks, and ties when deciding the game winner
+</br>
+c.	The Sword decides ties in combat, and the player at the top of the sword track gets +1 combat power in all fights that they are attacking or defending in
+</br>
+d.	The order on the Raven track decides how many stars player get when placing tiles
+</br>
+8.	Updates
+</br>
+a.	After bids, there is a chance that the wildlings will attack! 
+</br>
+i.	The wildlings have combat power shown by their position on the wildlings track on the board. 
+</br>
+ii.	When they attack players must bid power to stop them from stealing power from players. (Combined all players bid power must match or beat the wildlings combat power to stop them)
+</br>
+iii.	If players defeat the wildlings (bid a total power amount greater than or equal to the wildlings combat power) then nothing happens
+</br>
+iv.	If players do not bid enough to defeat the wildlings, then the player who bid the most power keeps their remaining power, the player who bid the least loses all of their power, and all other players lose half of their power.
+</br>
+b.	Supply
+</br>
+i.	Players can have armies of maximum size dictated by their position on the supply track.
+</br>
+ii.	0 to 2 supply means you can have a maximum of 2 units on any tile
+</br>
+iii.	3 to 5 supply means you can have a maximum of 3 units on any tile
+</br>
+iv.	6 supply means you can have a maximum of 4 units on any tile
+</br>
+v.	At the end of every game round the player’s supply is adjusted according to the total supply of zones under their control and units die in zones that are breaking the maximum size rule
+</br>
+</p>
+		<p>Valar Morghulis</p>
+	</div>
+
+</div><!-- /.modal -->
+
+
+<div id = "playBox">
+
+
+<!-- Buttons For Current Player Playable Tiles -->
+<select id="playingTile">
+</select>
+
+<!-- selects for raid options-->
+<div id="raidDiv">
+Use raid from 
+<select id="usableRaids" onchange='updateRaidableZones();'>
+</select>
+on
+<select id="raidableZones">
+</select>
+</div>
+
+<!-- selects for attack options-->
+<div id="attackDiv">
+Use attack from 
+<select id="usableAttacks" onchange='updateAttackableZones();'>
+</select>
+on
+<select id="attackableZones">
+</select>
+<!--<test compiled and minified CSS -->
+<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">-->
+
+<!-- Optional theme 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">-->
+with
+<select id="attackingFootmen">
+</select>
+footmen, 
+<select id="attackingKnights">
+</select>
+knights, 
+<select id="attackingSeige">
+</select>
+seige towers, and 
+<select id="attackingBoats">
+</select>
+boats.
+</div>
+
+<!--Div for fight information-->
+<div id="fight">
+Attacker base combat power: <div style="display:inline" id="attackerBaseCombatPower"></div>
+Defender base combat power: <div style="display:inline" id="defenderBaseCombatPower"></div>
+Total combat power: <div style="display:inline" id="combatPower"></div>
+<select id="availableGenerals" onchange='updateTotalCombatPower();'>
+</select>
+<button id="useGeneral" onclick='useGeneral();'>
+UseGeneral
+</button>
+</div>
+
+<!--Div for support information-->
+<div id="support">
+Player asked for support: <div id="supportingPlayer"></div>
+From zone: <div id="supportingZone"></div>
+Who do you support?
+<select id="decidingToSupport">
+</select>
+<button id="lendSupport" onclick='lendSupport();'>
+LendSupport
+</button>
+</div>
+
+<!--Div for mustering information-->
+<div id="musterDiv">
+<select id="musterFrom" onchange='updateMusterToZones();updateMusterableUnits();'>
+</select>
+<select id="musterTo" onchange='updateMusterableUnits();'>
+</select>
+<select id="musterableUnits"> 
+</select>
+<button id="muster" onclick='muster();'>
+Muster
+</button>
+</div>
+
+<!--Div for bidding information-->
+<div id="bidDiv">
+Power Offered: <select id="powerOffered"> 
+</select>
+<button id="bidPower" onclick='bidPower();'>
+Offer
+</button>
+</div>
+
+<!--Button To End Current Turn-->
+<button id="endTurn"> EndTurn </button>
+
+<!-- Display for important information -->
+<div id="currentPlayerText">Current Player : </div><div id="playerName"></div>
+<div id="remainingStars">should not appear</div>
+
+
+</div>
+<!-- gameInfo div-->
+<div id="gameInfo">
+	<div id="player1">
+		Player 1: <div id="player1Name">
+		</div><br>
+		Number of Castles: <div id="player1NumCastles">
+		</div><br>
+		Supply: <div id="player1Supply">
+		</div><br>
+		Power: <div id="player1Power">
+		</div><br>
+		Position on Throne Track: <div id="player1Throne">
+		</div><br>
+		Position on Sword Track: <div id="player1Sword">
+		</div><br>
+		Position on Raven Track: <div id="player1Raven">
+		</div>
+	</div><br>
+	<div id="player2">
+		Player 2: <div id="player2Name">
+		</div><br>
+		Number of Castles: <div id="player2NumCastles">
+		</div><br>
+		Supply: <div id="player2Supply">
+		</div><br>
+		Power: <div id="player2Power">
+		</div><br>
+		Position on Throne Track: <div id="player2Throne">
+		</div><br>
+		Position on Sword Track: <div id="player2Sword">
+		</div><br>
+		Position on Raven Track: <div id="player2Raven">
+		</div>
+	</div><br>
+	<div id="player3">
+		Player 3: <div id="player3Name">
+		</div><br>
+		Number of Castles: <div id="player3NumCastles">
+		</div><br>
+		Supply: <div id="player3Supply">
+		</div><br>
+		Power: <div id="player3Power">
+		</div><br>
+		Position on Throne Track: <div id="player3Throne">
+		</div><br>
+		Position on Sword Track: <div id="player3Sword">
+		</div><br>
+		Position on Raven Track: <div id="player3Raven">
+		</div>
+	</div><br>
+	<div id="player4">
+		Player 4: <div id="player4Name">
+		</div><br>
+		Number of Castles: <div id="player4NumCastles">
+		</div><br>
+		Supply: <div id="player4Supply">
+		</div><br>
+		Power: <div id="player4Power">
+		</div><br>
+		Position on Throne Track: <div id="player4Throne">
+		</div><br>
+		Position on Sword Track: <div id="player4Sword">
+		</div><br>
+		Position on Raven Track: <div id="player4Raven">
+		</div>
+	</div><br>
+	Turn Number: <div id="turnNumber">
+	</div>
+	Wildlings: <div id="wildlings">
+	</div>
+</div>
+</div>
+<script src = "audiojs/audiojs/audio.min.js"></script>
+<script type="text/javascript">
+/*audio.js init*/
+audiojs.events.ready(function(){
+	var as = audiojs.createAll()
+
+
+});
+//document.getElementById("test").addEventListener("click", move_it);
+var stark_cur_castle = "stark_castle_2";
+var lannister_cur_castle = "lannister_castle_1";
+var martell_cur_castle = "martell_castle_1";
+var targaryen_cur_castle = "targaryen_castle_1";
+
+var stark_cur_supply = "stark_supply_2";
+var lannister_cur_supply = "lannister_supply_3";
+var martell_cur_supply = "martell_supply_3";
+var targaryen_cur_supply = "targaryen_supply_3";
+
+var stark_cur_throne = "stark_throne_1";
+var lannister_cur_throne = "lannister_throne_2";
+var martell_cur_throne = "martell_throne_3";
+var targaryen_cur_throne = "targaryen_throne_4";
+
+var stark_cur_sword = "stark_sword_1";
+var lannister_cur_sword = "lannister_sword_2";
+var martell_cur_sword = "martell_sword_3";
+var targaryen_cur_sword = "targaryen_sword_4";
+
+var stark_cur_raven = "stark_raven_1";
+var lannister_cur_raven = "lannister_raven_2";
+var martell_cur_raven = "martell_raven_3";
+var targaryen_cur_raven = "targaryen_raven_4";
+
+var wildlings_cur = "wildlings_0";
+var round_cur = "round_1";
+/*function move_it(){
+	move_castle("Targaryen");
+
+}*/
+function move_wildlings(wildlings_pos) {
+			document.getElementById(wildlings_cur).id = "wildlings_" + (wildlings_pos);
+			wildlings_cur = "wildlings_" + (wildlings_pos);
+
+}
+function move_round(round_pos) {
+			document.getElementById(round_cur).id = "round_" + (round_pos);
+			round_cur = "round_" + (round_pos);
+
+}
+
+function move_raven(playername, numRaven) {
+	//console.log("button pressed");
+	switch(playername){
+		case "Stark":
+			document.getElementById(stark_cur_raven).id = "stark_raven_" + (numRaven);
+			stark_cur_raven = "stark_raven_" + (numRaven);
+			break;
+		case "Lannister":
+			document.getElementById(lannister_cur_raven).id = "lannister_raven_" + (numRaven);
+			lannister_cur_raven = "lannister_raven_" + (numRaven);
+			break;
+		case "Martell":
+			document.getElementById(martell_cur_raven).id = "martell_raven_" + (numRaven);
+			martell_cur_raven = "martell_raven_" + (numRaven);
+			break;
+		case "Targaryen":
+			document.getElementById(targaryen_cur_raven).id = "targaryen_raven_" + (numRaven);
+			targaryen_cur_raven = "targaryen_raven_" + (numRaven);
+			break;
+						
+
+	}
+}
+
+function move_sword(playername, numSword) {
+	//console.log("button pressed");
+	switch(playername){
+		case "Stark":
+			document.getElementById(stark_cur_sword).id = "stark_sword_" + (numSword);
+			stark_cur_sword = "stark_sword_" + (numSword);
+			break;
+		case "Lannister":
+			document.getElementById(lannister_cur_sword).id = "lannister_sword_" + (numSword);
+			lannister_cur_sword = "lannister_sword_" + (numSword);
+			break;
+		case "Martell":
+			document.getElementById(martell_cur_sword).id = "martell_sword_" + (numSword);
+			martell_cur_sword = "martell_sword_" + (numSword);
+			break;
+		case "Targaryen":
+			document.getElementById(targaryen_cur_sword).id = "targaryen_sword_" + (numSword);
+			targaryen_cur_sword = "targaryen_sword_" + (numSword);
+			break;
+						
+
+	}
+}
+
+function move_throne(playername, numThrone) {
+	//console.log("button pressed");
+	switch(playername){
+		case "Stark":
+			document.getElementById(stark_cur_throne).id = "stark_throne_" + (numThrone);
+			stark_cur_throne = "stark_throne_" + (numThrone);
+			break;
+		case "Lannister":
+			document.getElementById(lannister_cur_throne).id = "lannister_throne_" + (numThrone);
+			lannister_cur_throne = "lannister_throne_" + (numThrone);
+			break;
+		case "Martell":
+			document.getElementById(martell_cur_throne).id = "martell_throne_" + (numThrone);
+			martell_cur_throne = "martell_throne_" + (numThrone);
+			break;
+		case "Targaryen":
+			document.getElementById(targaryen_cur_throne).id = "targaryen_throne_" + (numThrone);
+			targaryen_cur_throne = "targaryen_throne_" + (numThrone);
+			break;
+						
+
+	}
+}
+
+function move_supply(playername, numSupply) {
+	//console.log("button pressed");
+	switch(playername){
+		case "Stark":
+			document.getElementById(stark_cur_supply).id = "stark_supply_" + (numSupply + 1);
+			stark_cur_supply = "stark_supply_" + (numSupply + 1);
+			break;
+		case "Lannister":
+			document.getElementById(lannister_cur_supply).id = "lannister_supply_" + (numSupply + 1);
+			lannister_cur_supply = "lannister_supply_" + (numSupply + 1);
+			break;
+		case "Martell":
+			document.getElementById(martell_cur_supply).id = "martell_supply_" + (numSupply + 1);
+			martell_cur_supply = "martell_supply_" + (numSupply + 1);
+			break;
+		case "Targaryen":
+			document.getElementById(targaryen_cur_supply).id = "targaryen_supply_" + (numSupply + 1);
+			targaryen_cur_supply = "targaryen_supply_" + (numSupply + 1);
+			break;
+						
+
+	}
+}
+function move_castle(playername, numCastles) {
+	//console.log("button pressed");
+	switch(playername){
+		case "Stark":
+			document.getElementById(stark_cur_castle).id = "stark_castle_" + (numCastles);
+			stark_cur_castle = "stark_castle_" + (numCastles);
+			break;
+		case "Lannister":
+			document.getElementById(lannister_cur_castle).id = "lannister_castle_" + (numCastles);
+			lannister_cur_castle = "lannister_castle_" + (numCastles);
+			break;
+		case "Martell":
+			document.getElementById(martell_cur_castle).id = "martell_castle_" + (numCastles);
+			martell_cur_castle = "martell_castle_" + (numCastles);
+			break;
+		case "Targaryen":
+			document.getElementById(targaryen_cur_castle).id = "targaryen_castle_" + (numCastles);
+			targaryen_cur_castle = "targaryen_castle_" + (numCastles);
+			break;
+						
+
+	}
+}
+
+/////////////////////////////////////////////
+///////////////////// GLOBALS///////////////////
+//////////////////////////////
+
+
+
+
+var tiles; //global tiles variable
+
+var tilePlacementRound = 0;
+var revealRound = 1;
+var raidRound = 2;
+var attackRound = 3;
+var powerRound = 4;
+var cardDrawRound = 5;
+var currentRound;
+
+var raidUsed;
+
+var inFight = false;
+var attackerSelecting;
+var attackingGeneralName;
+var defendingGeneralName;
+var attackerBaseCombatPower;
+var defenderBaseCombatPower;
+var attackerZone;
+var defenderZone;
+var attackerArmy; 
+var attackerTotalPower;
+
+var adjacentFightZones;
+var askForSupportIndex;
+var attackerSupportPower;
+var defenderSupportPower;
+
+var hasMusteredInZones;
+
+var wildlings = 0;
+
+//initialize buttons for every zone
+var zones = ["CastleBlack","Karhold","Winterfell","TheStonyShore","WhiteHarbor","WidowsWatch","MoatCailin","GreywaterWatch","FlintsFinger","Pyke","Seagard","TheTwins","TheFingers","TheMountainsOfTheMoon","TheEyrie","Riverrun","Lannisport","Harrenhal","StoneySept","CrackclawPoint","Dragonstone","SearoadMarches","Blackwater","KingsLanding","Kingswood","Highgarden","TheReach","DornishMarches","Oldtown","TheBoneway","StormsEnd","ThreeTowers","PrincesPass","TheArbor","Starfall","Yronwood","SaltShore","Sunspear","EastSummerSea","WestSummerSea","RedwyneStraights","SeaOfDorne","ShipbreakerBay","BlackwaterBay","TheGoldenSound","SunsetSea","IronmansBay","TheNarrowSea","BayOfIce","TheShiveringSea"];
+var zonesDiv = document.getElementById("zones");
+for(var i = 0; i < zones.length; i++){
+	var zoneDiv = document.createElement("div");
+	zoneDiv.setAttribute("class", "zone-class");
+	zoneDiv.id = zones[i];
+	zoneDiv.class = "zoneDiv";
+	var zoneButton = document.createElement("button");
+	zoneButton.id = zones[i] + "Btn";
+	zoneButton.class = "zone";
+	zoneButton.innerHTML = zones[i];
+	zoneButton.addEventListener("click", playTile.bind(zoneDiv), false);
+	var zoneInfoDiv = document.createElement("div");
+	zoneInfoDiv.id = zones[i] + "Info";
+	zoneDiv.appendChild(zoneButton);
+	zoneDiv.appendChild(zoneInfoDiv);
+	zonesDiv.appendChild(zoneDiv);
+}
+
+
+var maxGenerals = [[["Ned",4],["Rob",3],["Sansa",1]],[["Tywin",4],["Jayme",3],["Jeoffrey",1]],[["Oberyn",4],["Doran",3],["Obara",1]],[["Daenerys",4],["Rhaegar",3],["Viserys",1]]];
+var players = [["Stark", [10, 5, 2, 6], maxGenerals[0], 5, [1,1,1], 1, 2], ["Lannister", [10, 5, 2, 6], maxGenerals[1], 5, [2,2,2], 2, 1], ["Martell", [10, 5, 2, 6], maxGenerals[2], 5, [3,3,3], 2, 1], ["Targaryen", [10, 5, 2, 6], maxGenerals[3], 5, [4,4,4], 2, 1]];
+
+var zoneButtons = document.getElementsByClassName("zone");
+var currentPlayerIndex;
+var usedStars;
+
+var playerNameIndex = 0;
+var playerAvailableArmyIndex = 1;
+var playerAvaiableGeneralsIndex = 2;
+var playerPowerInHandIndex = 3;
+var playerTrackIndex = 4;
+var playerAvailableSupplyIndex = 5;
+var playerNumCastlesIndex = 6;
+
+var generalNameIndex = 0;
+var generalCombatPowerIndex = 1;
+
+var armyFootmanIndex = 0;
+var armyKnightIndex = 1;
+var armySeigeIndex = 2;
+var armyBoatIndex = 3;
+
+var trackThroneIndex = 0;
+var trackSwordIndex = 1;
+var trackRavenIndex = 2;
+
+var gameTurnNumber;
+
+initializeBoard();
+
+
+
+//////////////////////////////////////
+/////// FUNCTION DECLARATIONS
+///////
+/////////////////////////////////////
+
+
+
+///////////		TILE MANIPULATION FUNCTIONS	/////////////////////
+
+function loadTiles(){
+
+	tiles = ["Raid_0_0", "Raid_0_0", "Raid_1_0", "Power_0_0", "Power_0_0", "Power_1_0", "Defense_0_1", "Defense_0_1", "Defense_1_2", "Attack_0_-1", "Attack_0_0", "Attack_1_1", "Support_0_0", "Support_0_0", "Support_1_1"];//format: tile_#stars_#combatPnts
+
+
+
+	var tile_select = document.getElementById("playingTile");
+
+	//remove old options
+	while(tile_select.lastChild){
+		tile_select.removeChild(tile_select.lastChild);
+	}
+
+	
+	var stars_had = getNumberOfStars(players[currentPlayerIndex]);
+	for (var i = 0; i< tiles.length; i++){
+
+		var tile_stars = parseInt(tiles[i].split("_")[1]);
+		//alert(tile_stars);
+		
+		if (stars_had >= tile_stars)
+		{
+			var opt = document.createElement("option");
+			opt.value = tiles[i];
+			opt.text = tiles[i];
+			opt.id = tiles[i];
+			tile_select.appendChild(opt);
+
+		}
+	}
+
+
+}
+
+function refreshSelect(){
+	//refreshes select with number of used stars in mind
+	var tile_select = document.getElementById("playingTile");
+
+	//remove all children
+	while (tile_select.firstChild) {
+    	tile_select.removeChild(tile_select.firstChild);
+	}
+
+	//rebuild from current state of tiles
+	var stars_had = getNumberOfStars(players[currentPlayerIndex]);
+	for (var i = 0; i< tiles.length; i++){
+
+		var tile_stars = parseInt(tiles[i].split("_")[1]);
+		//alert(tile_stars);
+		
+		if (stars_had >= tile_stars)
+		{
+			var opt = document.createElement("option");
+			opt.value = tiles[i];
+			opt.text = tiles[i];
+			opt.id = tiles[i];
+			tile_select.appendChild(opt);
+
+		}
+	}
+}
+
+function removeTileMethod(){
+
+	//remove tile from
+	//alert("before add: " + tiles);
+	var tile_select = document.getElementById("playingTile");
+	var idx = tile_select.selectedIndex;
+	var selected_option = tile_select.options[idx];
+
+	//increment usedStars global
+	var stars_to_be_used = parseInt(selected_option.value.split("_")[1]);
+	usedStars += stars_to_be_used;
+	//remove from tiles array
+	tiles.splice(idx, 1);
+	//alert("\n after add: " + tiles);
+
+
+	//NB: removeTileMethod should always be called after addTileMethod (if addTileMethod is called)
+	// this allows the placement of refreshSelect here.
+	refreshSelect();
+}
+
+function addTileMethod(tile){
+
+	//adds tile back to tile select input
+	var opt = document.createElement("option");
+	opt.text = tile;
+	opt.value = tile;
+	opt.id = tile;
+	document.getElementById("playingTile").appendChild(opt);
+
+	//decrement usedStars global
+	var stars_returned = parseInt(tile.split("_")[1]);
+	usedStars -= stars_returned;
+
+	//add to tiles array
+	tiles.push(tile);
+
+
+}
+
+
+//////////////////////////////////////////
+
+
+
+document.getElementById("endTurn").addEventListener("click", endTurn, false);
+document.getElementById("playerName").innerHTML = players[currentPlayerIndex][playerNameIndex] + " (" + players[currentPlayerIndex][playerPowerInHandIndex] + " Power)";
+document.getElementById("remainingStars").innerHTML = "Available Stars : " + getNumberOfStars();
+
+
+function endTurn(){
+	updatePlayerInfo();
+	document.getElementById("turnNumber").innerHTML = gameTurnNumber;
+	document.getElementById("wildlings").innerHTML = wildlings;
+	if(currentRound == tilePlacementRound){
+		currentPlayerIndex = ((currentPlayerIndex+1)%players.length);//increment currentPlayer
+		usedStars = 0;//reset number of stars used
+		//tell players current player and number of stars info
+		document.getElementById("playerName").innerHTML = players[currentPlayerIndex][playerNameIndex] + " (" + players[currentPlayerIndex][playerPowerInHandIndex] + " Power)";
+		document.getElementById("remainingStars").innerHTML = "Available Stars : " + getNumberOfStars();
+	
+		loadTiles();	//load tiles for new player.
+
+		//if we return to the first player the tile placement round ends and reveal round begins
+		if(currentPlayerIndex == 0){
+			currentRound = revealRound;
+			
+			beginRevealRound();
+		}
+
+		//
+
+		for (var i = 0; i < zones.length; i++){
+			var zone = document.getElementById(zones[i]);
+			zoneJSONToHTML(zone);
+
+		}
+	}
+
+
+	else if(currentRound == revealRound){
+		currentRound = raidRound;
+		beginRaidRound();
+	}
+	else if(currentRound == raidRound){
+		if(raidUsed){
+			useRaid();//remove current player's used raid from the board
+		}
+		if(noRaidsOnBoard()){//no more raids left on board
+			currentRound = attackRound;
+			beginAttackRound();
+		}
+		else{
+			currentPlayerIndex = ((currentPlayerIndex+1)%players.length);//increment currentPlayer
+			//tell players current player
+			document.getElementById("playerName").innerHTML = players[currentPlayerIndex][playerNameIndex] + " (" + players[currentPlayerIndex][playerPowerInHandIndex] + " Power)";
+			if(getUsableRaids() != false){//fill a select with raids that can be used
+				raidUsed = true;
+				updateRaidableZones();//fill another select with where the raid from the first select can be used on (all adjacent zones containing a power, or raid)
+			}
+			else{
+				raidUsed = false;
+				endTurn();
+			}
+		}
+	}
+	else if(currentRound == attackRound){
+		if(attackUsed){
+			useAttack();//remove current player's used attack from the board
+		}
+		else{
+			inFight = false;
+		}
+		if(!inFight){
+			if(noAttacksOnBoard()){//no more attacks left on board
+				currentRound = powerRound;
+				beginPowerRound();
+			}
+			else{
+				currentPlayerIndex = ((currentPlayerIndex+1)%players.length);//increment currentPlayer
+				//tell players current player
+				document.getElementById("playerName").innerHTML = players[currentPlayerIndex][playerNameIndex] + " (" + players[currentPlayerIndex][playerPowerInHandIndex] + " Power)";
+				if(getUsableAttacks() != false){//fill a select with attacks that can be used
+					attackUsed = true;
+					updateAttackableZones();//fill another select with where the attack from the first select can be used on (all adjacent zones of the same type or chain through sea)
+				}
+				else{
+					attackUsed = false;
+					endTurn();
+				}
+			}
+		}
+	}
+	else if(currentRound == powerRound){
+		currentRound = cardDrawRound;
+		beginCardDrawRound();
+	}
+	else if(currentRound == cardDrawRound){
+		currentRound = tilePlacementRound;
+		beginTilePlacementRound();
+		for (var i = 0; i < zones.length; i++){
+			var zone = document.getElementById(zones[i]);
+			zoneJSONToHTML(zone);
+
+		}
+	}
+	
+
+}
+
+function beginTilePlacementRound(){
+	currentPlayerIndex = 0;
+	document.getElementById("playerName").innerHTML = players[currentPlayerIndex][playerNameIndex] + " (" + players[currentPlayerIndex][playerPowerInHandIndex] + " Power)";
+	usedStars = 0;//reset number of stars used
+	document.getElementById("currentRound").innerHTML = "Current Round: Tile Placement";
+	document.getElementById("roundInfo").innerHTML = "The current player should place their game tiles on areas they control. Press EndTurn when done.";
+	document.getElementById("endTurn").innerHTML = "EndTurn";
+	$("#currentPlayerText").show();
+	$("#playerName").show();
+	$("#remainingStars").show();
+	$("#playingTile").show();
+	$("#endTurn").show();
+	$("#raidDiv").hide();
+	$("#fight").hide();
+	$("#support").hide();
+	$("#attackDiv").hide();
+	$("#musterDiv").hide();
+	$("#bidDiv").hide();
+	loadTiles();
+}
+
+function beginRevealRound(){
+	document.getElementById("currentRound").innerHTML = "Current Round: Reveal";
+	document.getElementById("roundInfo").innerHTML = "The tiles that every player has placed have been revealed! Examine to your hearts content and press Continue when done.";
+	document.getElementById("endTurn").innerHTML = "Continue";
+	$("#currentPlayerText").hide();
+	$("#playerName").hide();
+	$("#remainingStars").hide();
+	$("#playingTile").hide();
+	$("#raidDiv").hide();
+	$("#attackDiv").hide();
+}
+
+function beginRaidRound(){
+	document.getElementById("currentRound").innerHTML = "Current Round: Raid";
+	document.getElementById("roundInfo").innerHTML = "The current player should select the raid they want to use and the zone they want to use it on from the two drop down menus. Press UseRaid when done.";
+	document.getElementById("endTurn").innerHTML = "UseRaid";
+	$("#currentPlayerText").show();
+	$("#playerName").show();
+	$("#raidDiv").show();
+	$("#attackDiv").hide();
+	if(getUsableRaids()){//fill a select with raids that can be used
+		raidUsed = true;
+		updateRaidableZones();//fill another select with where the raid from the first select can be used on (all adjacent zones containing a power, or raid)
+	}
+	else{
+		raidUsed = false;
+		endTurn();
+	}
+}
+
+function beginAttackRound(){
+	currentPlayerIndex = 0;
+	document.getElementById("playerName").innerHTML = players[currentPlayerIndex][playerNameIndex] + " (" + players[currentPlayerIndex][playerPowerInHandIndex] + " Power)";
+	document.getElementById("currentRound").innerHTML = "Current Round: Attack";
+	document.getElementById("roundInfo").innerHTML = "Players may attack from the zones where they have Attack Tiles.";
+	document.getElementById("endTurn").innerHTML = "UseAttack";
+	$("#raidDiv").hide();
+	$("#attackDiv").show();
+	if(getUsableAttacks() != false){//fill a select with attacks that can be used
+		attackUsed = true;
+		updateAttackableZones();//fill another select with where the attack from the first select can be used on (all adjacent zones of the same type or chain through sea)
+	}
+	else{
+		attackUsed = false;
+		endTurn();
+	}
+}
+
+function beginPowerRound(){
+	for(var i = 0; i < zones.length; i++){
+		jsonData = JSON.parse(document.getElementById(zones[i]).value);
+		if(jsonData.tile.indexOf("Power") > -1){
+			if(jsonData.zoneType == "land"){
+				for(var j = 0; j < players.length; j++){
+					if(players[j][playerNameIndex] == jsonData.name){
+						players[j][playerPowerInHandIndex] += (1+parseInt(jsonData.powerBonus));
+					}
+				}
+			}
+		}
+		makeTileNothing(zones[i]);
+	}
+	gameTurnNumber++;
+	move_round(gameTurnNumber);
+	if(gameTurnNumber > 10){
+		endGame();
+	}
+	endTurn();
+}
+
+function endGame(){
+	var winningPlayerIndex;
+	var maxCastles = -1;
+	for(var i = 0; i < players.length; i++){
+		if(players[i][playerNumCastlesIndex] > maxCastles){
+			winningPlayerIndex = i;
+			maxCastles = players[i][playerNumCastlesIndex];
+		}
+	}
+	document.getElementById("gameOver").innerHTML = "THE GAME HAS COME TO COMPLETION";
+	document.getElementById("gameOverInfo").innerHTML = "Congratulations " + players[winningPlayerIndex][playerNameIndex] + ", you are the winner!";
+	$("#all").hide();
+}
+
+function beginCardDrawRound(){
+	$("#currentPlayerText").hide();
+	$("#playerName").hide();
+	$("#attackDiv").hide();
+	document.getElementById("currentRound").innerHTML = "Current Round: Card Draw";
+	document.getElementById("roundInfo").innerHTML = "";
+	var rand = 10*Math.random();
+	if(rand < 5) {
+		prepareMuster();
+	}
+	else{
+		rand = 10*Math.random();
+		if(rand < 4){
+			$("#currentPlayerText").hide();
+			$("#playerName").hide();
+			$("#musterDiv").hide();
+			$("#endTurn").show();
+			adjustSupply();
+			castleCount();
+			bidOnTracksThenWildlings();		
+		}
+		else{
+			adjustSupply();
+			castleCount();
+			wildlings=(wildlings+2);
+			move_wildlings(wildlings);
+			var randomAttack = 10*Math.random();
+			if(wildlings==12){
+				wildlingsAttack();
+			}
+			else if(randomAttack < 2){
+				wildlingsAttack();
+			}
+			else{
+				endTurn();
+			}
+		}	
+	}
+	document.getElementById("endTurn").innerHTML = "Continue";
+}
+
+function prepareMuster(){
+	currentPlayerIndex = 0;
+	hasMusteredInZones = [];
+	while(!playerCanMuster()){
+		currentPlayerIndex = ((currentPlayerIndex+1)%players.length);//increment currentPlayer
+		document.getElementById("playerName").innerHTML = players[currentPlayerIndex][playerNameIndex] + " (" + players[currentPlayerIndex][playerPowerInHandIndex] + " Power)";
+	}
+	$("#currentPlayerText").show();
+	$("#playerName").show();
+	$("#musterDiv").show();
+	$("#endTurn").hide();
+	document.getElementById("currentRound").innerHTML = "Current Round: Mustering";
+	document.getElementById("roundInfo").innerHTML = "Every player is premitted to create new units from castles under his or her control. Select the zone you wish to muster from and the units you wish to muster. Press Muster when done.";
+	loadMusterFromZones();
+	updateMusterToZones();
+	updateMusterableUnits();
+}
+
+function loadMusterFromZones(){
+	//remove old options
+	while(document.getElementById("musterFrom").lastChild){
+		document.getElementById("musterFrom").removeChild(document.getElementById("musterFrom").lastChild);
+	}
+	var name = document.getElementById("playerName").innerHTML.split(" ")[0];
+	for(var i = 0; i < zones.length; i++){
+		var jsonData = JSON.parse(document.getElementById(zones[i]).value);
+		if(hasMusteredInZones.indexOf(zones[i])==-1 && name==jsonData.name && parseInt(jsonData.castleSize) > 0){
+			var opt = document.createElement("option");
+			opt.text = zones[i];
+			opt.value = zones[i];
+			document.getElementById("musterFrom").appendChild(opt);
+		}
+	}
+
+}
+
+function updateMusterToZones(){
+	//remove old options
+	while(document.getElementById("musterTo").lastChild){
+		document.getElementById("musterTo").removeChild(document.getElementById("musterTo").lastChild);
+	}
+	var fromZone = document.getElementById("musterFrom").value;
+	var adjacentZones = JSON.parse(document.getElementById(fromZone).value).adjacentZones.split(",");
+	var opt = document.createElement("option");
+	opt.text = fromZone;
+	opt.value = fromZone;
+	document.getElementById("musterTo").appendChild(opt);
+	for(var i = 0; i < adjacentZones.length; i++){
+		var adjacentJson = JSON.parse(document.getElementById(adjacentZones[i]).value);
+		if(adjacentJson.zoneType=="sea"){
+			var opt = document.createElement("option");
+			opt.text = adjacentZones[i];
+			opt.value = adjacentZones[i];
+			document.getElementById("musterTo").appendChild(opt);
+		}
+	}
+}
+
+function updateMusterableUnits(){
+	//remove old options
+	while(document.getElementById("musterableUnits").lastChild){
+		document.getElementById("musterableUnits").removeChild(document.getElementById("musterableUnits").lastChild);
+	}
+	var fromZone = document.getElementById("musterFrom").value;
+	var toZone = document.getElementById("musterTo").value;
+	var fromZoneJsonData = JSON.parse(document.getElementById(fromZone).value);
+	var toZoneJsonData = JSON.parse(document.getElementById(toZone).value);
+	var availableArmy;
+	for(var i = 0; i < players.length; i++){
+		if(players[i][playerNameIndex]==fromZoneJsonData.name){
+			availableArmy = players[i][playerAvailableArmyIndex];
+		}
+	}
+	if(parseInt(fromZoneJsonData.castleSize) == 1){
+		if(toZoneJsonData.zoneType=="land"){
+			if(availableArmy[armyFootmanIndex] >= 1){
+				var opt = document.createElement("option");
+				opt.text = "1 Footman";
+				opt.value = "1 Footman";
+				document.getElementById("musterableUnits").appendChild(opt);
+			}
+			if(parseInt(toZoneJsonData.defendingArmy[armyFootmanIndex]) > 0){
+				if(availableArmy[armyKnightIndex] >= 1){
+					var opt = document.createElement("option");
+					opt.text = "1 Knight (Upgrade Footman)";
+					opt.value = "1 Knight (Upgrade Footman)";
+					document.getElementById("musterableUnits").appendChild(opt);
+				}
+				if(availableArmy[armySeigeIndex] >= 1){
+					var opt = document.createElement("option");
+					opt.text = "1 Seige Tower (Upgrade Footman)";
+					opt.value = "1 Seige Tower (Upgrade Footman)";
+					document.getElementById("musterableUnits").appendChild(opt);
+				}
+			}
+		}
+		else{
+			if(availableArmy[armyBoatIndex] >= 1){
+				var opt = document.createElement("option");
+				opt.text = "1 Boat";
+				opt.value = "1 Boat";
+				document.getElementById("musterableUnits").appendChild(opt);
+			}
+		}
+	}
+	else{
+		if(toZoneJsonData.zoneType=="land"){
+			if(availableArmy[armyFootmanIndex] >= 1){
+				var opt = document.createElement("option");
+				opt.text = "1 Footman";
+				opt.value = "1 Footman";
+				document.getElementById("musterableUnits").appendChild(opt);
+			}
+			if(parseInt(toZoneJsonData.defendingArmy[armyFootmanIndex]) > 0){
+				if(availableArmy[armyKnightIndex] >= 1){
+					var opt = document.createElement("option");
+					opt.text = "1 Knight (Upgrade Footman)";
+					opt.value = "1 Knight (Upgrade Footman)";
+					document.getElementById("musterableUnits").appendChild(opt);
+				}
+				if(availableArmy[armySeigeIndex] >= 1){
+					var opt = document.createElement("option");
+					opt.text = "1 Seige Tower (Upgrade Footman)";
+					opt.value = "1 Seige Tower (Upgrade Footman)";
+					document.getElementById("musterableUnits").appendChild(opt);
+				}
+				if(parseInt(toZoneJsonData.defendingArmy[armyFootmanIndex]) > 1){
+					if(availableArmy[armyKnightIndex] >= 2){
+						var opt = document.createElement("option");
+						opt.text = "2 Knights (Upgrade Footmen)";
+						opt.value = "2 Knights (Upgrade Footmen)";
+						document.getElementById("musterableUnits").appendChild(opt);
+					}
+					if(availableArmy[armySeigeIndex] >= 2){
+						var opt = document.createElement("option");
+						opt.text = "2 Seige Towers (Upgrade Footmen)";
+						opt.value = "2 Seige Towers (Upgrade Footmen)";
+						document.getElementById("musterableUnits").appendChild(opt);
+					}
+					if(availableArmy[armyKnightIndex] >= 1 && availableArmy[armySeigeIndex] >= 1){
+						var opt = document.createElement("option");
+						opt.text = "1 Knight (Upgrade Footman) and 1 Seige Tower (Upgrade Footman)";
+						opt.value = "1 Knight (Upgrade Footman) and 1 Seige Tower (Upgrade Footman)";
+						document.getElementById("musterableUnits").appendChild(opt);
+					}
+				}
+			}
+			if(availableArmy[armyKnightIndex] >= 1){
+				var opt = document.createElement("option");
+				opt.text = "1 Knight";
+				opt.value = "1 Knight";
+				document.getElementById("musterableUnits").appendChild(opt);
+			}
+			if(availableArmy[armySeigeIndex] >= 1){
+				var opt = document.createElement("option");
+				opt.text = "1 Seige Tank";
+				opt.value = "1 Seige Tank";
+				document.getElementById("musterableUnits").appendChild(opt);
+			}
+			if(availableArmy[armyFootmanIndex] >= 2){
+				var opt = document.createElement("option");
+				opt.text = "2 Footmen";
+				opt.value = "2 Footmen";
+				document.getElementById("musterableUnits").appendChild(opt);
+			}
+		}
+		else{
+			if(availableArmy[armyBoatIndex] >= 1){
+				var opt = document.createElement("option");
+				opt.text = "1 Boat";
+				opt.value = "1 Boat";
+				document.getElementById("musterableUnits").appendChild(opt);
+			}
+			if(availableArmy[armyBoatIndex] >= 2){
+				var opt = document.createElement("option");
+				opt.text = "2 Boats";
+				opt.value = "2 Boats";
+				document.getElementById("musterableUnits").appendChild(opt);
+			}
+		}
+	}
+}
+
+function muster(){
+	var army = parseMusteredArmy();
+	var armyMusterUpgradeIndex = 4;
+	var fromZone = document.getElementById("musterFrom").value;
+	var toZone = document.getElementById("musterTo").value;
+	var fromZoneJsonData = JSON.parse(document.getElementById(fromZone).value);
+	var toZoneJsonData = JSON.parse(document.getElementById(toZone).value);
+	replaceInPlayerHand(fromZoneJsonData.name, [parseInt(army[armyMusterUpgradeIndex]) - parseInt(army[armyFootmanIndex]),-army[armyKnightIndex],-army[armySeigeIndex],-army[armyBoatIndex]]);//remove unit(s) from players hand that are being played
+	moveArmyOntoZone(toZone, [parseInt(army[armyFootmanIndex]) - parseInt(army[armyMusterUpgradeIndex]), army[armyKnightIndex], army[armySeigeIndex], army[armyBoatIndex]])//place unit(s) on board
+	hasMusteredInZones.push(fromZone);//add musterFrom zone to list of mustered zones
+	if(completedMusters()){//check if we have completed all possible musters
+		var rand = 10*Math.random();
+		if(rand < 4){
+			$("#currentPlayerText").hide();
+			$("#playerName").hide();
+			$("#musterDiv").hide();
+			$("#endTurn").show();
+			adjustSupply();
+			//randomizeTracksByPower();
+			castleCount();
+			bidOnTracksThenWildlings();
+		}
+		else{
+			adjustSupply();
+			castleCount();
+			wildlings=(wildlings+2);
+			move_wildlings(wildlings);
+			var randomAttack = 10*Math.random();
+			if(wildlings==12){
+				wildlingsAttack();
+			}
+			else if(randomAttack < 2){
+				wildlingsAttack();
+			}
+			else{
+				endTurn();
+			}
+		}	
+		/*
+		wildlings=(wildlings+2);
+		var randomAttack = 8*Math.random();
+		if(wildlings==12){
+			wildlingsAttack();
+			
+		}
+		else if(randomAttack > 2){
+			wildlingsAttack();
+		}
+		else{
+			endTurn();
+		}
+		*/
+	}
+	else{
+		currentPlayerIndex = ((currentPlayerIndex+1)%players.length);//increment currentPlayer
+		document.getElementById("playerName").innerHTML = players[currentPlayerIndex][playerNameIndex] + " (" + players[currentPlayerIndex][playerPowerInHandIndex] + " Power)";
+		while(!playerCanMuster()){
+			currentPlayerIndex = ((currentPlayerIndex+1)%players.length);//increment currentPlayer
+			document.getElementById("playerName").innerHTML = players[currentPlayerIndex][playerNameIndex] + " (" + players[currentPlayerIndex][playerPowerInHandIndex] + " Power)";
+		}
+		loadMusterFromZones();
+		updateMusterToZones();
+		updateMusterableUnits();
+	}
+}
+
+function bidOnTracksThenWildlings(){
+	bidThrone();
+}
+
+function bidThrone(){
+	$("#currentPlayerText").show();
+	$("#playerName").show();
+	$("#endTurn").hide();
+	$("#bidDiv").show();
+	document.getElementById("currentRound").innerHTML = "Current Round: Bid Power on Throne.";
+	document.getElementById("roundInfo").innerHTML = "Players must each bid power to try and win the Throne! Order on throne track decides turn order.";
+	currentPlayerIndex = 0;
+	playerBids = [0,0,0,0];
+	totalBid = 0;
+	biddingFor = "throne";
+	document.getElementById("playerName").innerHTML = players[currentPlayerIndex][playerNameIndex] + " (" + players[currentPlayerIndex][playerPowerInHandIndex] + " Power)";
+	askForPowerBid();
+}
+
+function bidSword(){
+	$("#currentPlayerText").show();
+	$("#playerName").show();
+	$("#endTurn").hide();
+	$("#bidDiv").show();
+	document.getElementById("currentRound").innerHTML = "Current Round: Bid Power on Sword.";
+	document.getElementById("roundInfo").innerHTML = "Players must each bid power to try and win the Sword! Order on sword track decides ties in battle.";
+	currentPlayerIndex = 0;
+	playerBids = [0,0,0,0];
+	totalBid = 0;
+	biddingFor = "sword";
+	document.getElementById("playerName").innerHTML = players[currentPlayerIndex][playerNameIndex] + " (" + players[currentPlayerIndex][playerPowerInHandIndex] + " Power)";
+	askForPowerBid();
+
+}
+
+function bidRaven(){
+	$("#currentPlayerText").show();
+	$("#playerName").show();
+	$("#endTurn").hide();
+	$("#bidDiv").show();
+	document.getElementById("currentRound").innerHTML = "Current Round: Bid Power on Raven.";
+	document.getElementById("roundInfo").innerHTML = "Players must each bid power to try and win the Raven! Order on raven track decides number of usable stars in tile placement.";
+	currentPlayerIndex = 0;
+	playerBids = [0,0,0,0];
+	totalBid = 0;
+	biddingFor = "raven";
+	document.getElementById("playerName").innerHTML = players[currentPlayerIndex][playerNameIndex] + " (" + players[currentPlayerIndex][playerPowerInHandIndex] + " Power)";
+	askForPowerBid();
+
+}
+
+function wildlingsAttack(){
+	updatePlayerInfo();
+	$("#currentPlayerText").show();
+	$("#playerName").show();
+	$("#endTurn").hide();
+	$("#bidDiv").show();
+	document.getElementById("currentRound").innerHTML = "Current Round: Wildlings Attack!";
+	document.getElementById("roundInfo").innerHTML = "The Wildlings are attacking! The combined bid of all players must be greather than or equal to the wildlings power, or all players will lose all of their power!";
+	currentPlayerIndex = 0;
+	totalBid = 0;
+	biddingFor = "wildlings";
+	document.getElementById("playerName").innerHTML = players[currentPlayerIndex][playerNameIndex] + " (" + players[currentPlayerIndex][playerPowerInHandIndex] + " Power)";
+	askForPowerBid();
+}
+
+function askForPowerBid(){
+	//remove old options
+	while(document.getElementById("powerOffered").lastChild){
+		document.getElementById("powerOffered").removeChild(document.getElementById("powerOffered").lastChild);
+	}
+	for(var i = 0; i <= players[currentPlayerIndex][playerPowerInHandIndex]; i++){
+		var opt = document.createElement("option");
+		opt.text = i;
+		opt.value = i;
+		document.getElementById("powerOffered").appendChild(opt);
+
+	}
+}
+
+var totalBid;
+var playerBids = [0,0,0,0];
+var biddingFor;
+
+function bidPower(){
+	var amountBid = document.getElementById("powerOffered").value;
+	players[currentPlayerIndex][playerPowerInHandIndex] = parseInt(players[currentPlayerIndex][playerPowerInHandIndex]) - parseInt(amountBid);
+	playerBids[currentPlayerIndex] = parseInt(playerBids[currentPlayerIndex]) + parseInt(amountBid);
+	totalBid = parseInt(totalBid) + parseInt(amountBid);
+	currentPlayerIndex = ((currentPlayerIndex+1)%players.length);//increment currentPlayer
+	document.getElementById("playerName").innerHTML = players[currentPlayerIndex][playerNameIndex] + " (" + players[currentPlayerIndex][playerPowerInHandIndex] + " Power)";
+	if(currentPlayerIndex==0){
+		if(biddingFor == "wildlings"){
+			if(totalBid < wildlings){
+				wildlingsWin();
+			}
+			wildlings = 0;
+			move_wildlings(wildlings);
+			endTurn();
+		}
+		else if(biddingFor == "throne"){
+			decideTrackWinner(trackThroneIndex);
+			bidSword();
+		}
+		else if(biddingFor == "sword"){
+			decideTrackWinner(trackSwordIndex);
+			bidRaven();
+		}
+		else if(biddingFor == "raven"){
+			decideTrackWinner(trackRavenIndex);
+			updatePlayerOrder();
+			wildlings=(wildlings+2);
+			move_wildlings(wildlings);
+			var randomAttack = 10*Math.random();
+			if(wildlings==12){
+				wildlingsAttack();
+			}
+			else if(randomAttack < 2){
+				wildlingsAttack();
+			}
+			else{
+				endTurn();
+			}
+		}
+	}
+	else{
+		askForPowerBid();
+	}
+}
+
+function decideTrackWinner(trackIndex){
+	var offset = 0.1;
+	for(var i = 0; i < playerBids.length; i++){
+		for(var j = i+1; j < playerBids.length; j++){
+			if(playerBids[i]==playerBids[j]){
+				playerBids[j] = parseInt(playerBids[j]) - offset;
+				offset+=0.1;
+			}
+		}
+	}
+	var sortedBids = [playerBids[0], playerBids[1], playerBids[2], playerBids[3]];
+	sortedBids.sort().reverse();
+	for(var i = 0; i < players.length; i++){
+		players[i][playerTrackIndex][trackIndex] = sortedBids.indexOf(playerBids[i]) + 1;
+	}
+}
+
+function updatePlayerOrder(){
+	for(var i = 0; i < players.length; i++){
+		for(var j = i; j < players.length; j++){
+			if(players[j][playerTrackIndex][trackThroneIndex] == i+1){
+				var tmpPlayer = players[j];
+				players[j] = players[i];
+				players[i] = tmpPlayer;
+			}
+		}
+	}
+	for(var i = 0; i < players.length; i++){
+		move_throne(players[i][playerNameIndex], players[i][playerTrackIndex][trackThroneIndex]);
+		move_sword(players[i][playerNameIndex], players[i][playerTrackIndex][trackSwordIndex]);
+		move_raven(players[i][playerNameIndex], players[i][playerTrackIndex][trackRavenIndex]);
+	}
+}
+
+function wildlingsWin(){
+	var maxBid = playerBids[0];
+	var minBid = playerBids[0];
+	for(var i = 0; i < playerBids.length; i++){
+		if(playerBids[i] > maxBid){
+			maxBid = playerBids[i];
+		}
+		if(playerBids[i] < minBid){
+			minBid = playerBids[i];
+		}
+	}
+	for(var i = 0; i < players.length; i++){
+		if(playerBids[i]==maxBid){
+		}
+		else if(playerBids[i]==minBid){
+			players[i][playerPowerInHandIndex] = 0;
+		}
+		else{
+			players[i][playerPowerInHandIndex] = parseInt(parseInt(players[i][playerPowerInHandIndex])/2);
+		}
+	}
+}
+
+function castleCount(){
+	for(var i = 0; i < players.length; i++){
+		players[i][playerNumCastlesIndex] = 0;
+	}
+	for(var i = 0; i < zones.length; i++){
+		var jsonData = JSON.parse(document.getElementById(zones[i]).value);
+		if(jsonData.name!="Locals" && parseInt(jsonData.castleSize) > 0){
+			for(var j = 0; j < players.length; j++){
+				if(jsonData.name==players[j][playerNameIndex]){
+					players[j][playerNumCastlesIndex]++;
+					if(players[j][playerNumCastlesIndex] >= 7){
+						endGame();
+					}
+				}
+			}
+		}
+	}
+	for(var i = 0; i < players.length; i++){
+		move_castle(players[i][playerNameIndex], players[i][playerNumCastlesIndex]);
+	}
+}
+
+function adjustSupply(){
+	for(var i = 0; i < players.length; i++){
+		players[i][playerAvailableSupplyIndex] = 0;
+	}
+	for(var i = 0; i < zones.length; i++){
+		var jsonData = JSON.parse(document.getElementById(zones[i]).value);
+		if(jsonData.name!="Locals" && parseInt(jsonData.supplyBonus) > 0){
+			for(var j = 0; j < players.length; j++){
+				if(jsonData.name==players[j][playerNameIndex]){
+					players[j][playerAvailableSupplyIndex] = parseInt(players[j][playerAvailableSupplyIndex]) + parseInt(jsonData.supplyBonus);
+				}
+			}
+		}
+	}
+	for(var i = 0; i < zones.length; i++){
+		if(jsonData.name!="Locals"){
+			fixSupply(zones[i]);
+		}
+	}
+	for(var i = 0; i < players.length; i++){
+		move_supply(players[i][playerNameIndex], players[i][playerAvailableSupplyIndex]);
+	}
+}
+
+function fixSupply(zone){
+	var jsonData = JSON.parse(document.getElementById(zone).value);
+	var availableSupply;
+	var playerIndex;
+	for(var i = 0; i < players.length; i++){
+		if(jsonData.name==players[i][playerNameIndex]){
+			playerIndex = i;
+			availableSupply = players[i][playerAvailableSupplyIndex];
+		}
+	}
+	var maxArmySize;
+	if(availableSupply <= 2){
+		maxArmySize = 2;
+	}
+	else if(availableSupply <= 5){
+		maxArmySize = 3;
+	}
+	else{
+		maxArmySize = 4;
+	}
+	var armySize = parseInt(jsonData.defendingArmy[armyFootmanIndex]) + parseInt(jsonData.defendingArmy[armyKnightIndex]) + parseInt(jsonData.defendingArmy[armySeigeIndex]) + parseInt(jsonData.defendingArmy[armyBoatIndex]);
+	if(armySize > maxArmySize){
+		var neededReduction = armySize - maxArmySize;
+		while(neededReduction > 0 &&  jsonData.defendingArmy[armyFootmanIndex] > 0){
+			replaceInPlayerHand(players[playerIndex][playerNameIndex], [1,0,0,0]);//make units availabe for play once more
+			moveArmyOutOfZone(zone, [1,0,0,0]);//remove excess army from board
+			neededReduction--;
+		}
+		while(neededReduction > 0 &&  jsonData.defendingArmy[armySeigeIndex] > 0){
+			replaceInPlayerHand(players[playerIndex][playerNameIndex], [0,0,1,0]);//make units availabe for play once more
+			moveArmyOutOfZone(zone, [0,0,1,0]);//remove excess army from board
+			neededReduction--;
+		}
+		while(neededReduction > 0 &&  jsonData.defendingArmy[armyKnightIndex] > 0){
+			replaceInPlayerHand(players[playerIndex][playerNameIndex], [0,1,0,0]);//make units availabe for play once more
+			moveArmyOutOfZone(zone, [0,1,0,0]);//remove excess army from board
+			neededReduction--;
+		}
+		while(neededReduction > 0 &&  jsonData.defendingArmy[armyBoatIndex] > 0){
+			replaceInPlayerHand(players[playerIndex][playerNameIndex], [0,0,0,1]);//make units availabe for play once more
+			moveArmyOutOfZone(zone, [0,0,0,1]);//remove excess army from board
+			neededReduction--;
+		}
+	}
+}
+
+function randomizeTracksByPower(){
+	var throneBids = [];
+	var swordBids = [];
+	var ravenBids = [];
+	for(var i = 0; i < players.length; i++){
+		var power = players[i][playerPowerInHandIndex] + 1;
+		var num1 = parseInt(power*Math.random());
+		var num2 = parseInt((power-num1)*Math.random());
+		var num3 = parseInt((power-num1-num2)*Math.random());
+		while(throneBids.indexOf(num1) > -1){
+			num1-=0.1;
+		}
+		while(swordBids.indexOf(num2) > -1){
+			num2-=0.1;
+		}
+		while(ravenBids.indexOf(num3) > -1){
+			num3-=0.1;
+		}
+		throneBids[i] = (num1);
+		swordBids[i] = (num2);
+		ravenBids[i] = (num3);
+		players[i][playerPowerInHandIndex] = parseInt(players[i][playerPowerInHandIndex]) - parseInt(num1) - parseInt(num2) - parseInt(num3);
+	}
+	//alert("T: "+throneBids + " S: " + swordBids + " R: " + ravenBids);
+	var sortedThrone = [throneBids[0], throneBids[1], throneBids[2], throneBids[3]];
+	var sortedSword = [swordBids[0], swordBids[1], swordBids[2], swordBids[3]];
+	var sortedRaven = [ravenBids[0], ravenBids[1], ravenBids[2], ravenBids[3]];
+	sortedThrone.sort().reverse();
+	sortedSword.sort().reverse();
+	sortedRaven.sort().reverse();
+	//alert("T: "+throneBids+" ST: "+sortedThrone);
+	//alert("S: "+swordBids+" SS: "+sortedSword);
+	//alert("R: "+ravenBids+" SR: "+sortedRaven);
+	for(var i = 0; i < players.length; i++){
+		players[i][playerTrackIndex][trackThroneIndex] = sortedThrone.indexOf(throneBids[i]) + 1;
+		players[i][playerTrackIndex][trackSwordIndex] = sortedSword.indexOf(swordBids[i]) + 1;
+		players[i][playerTrackIndex][trackRavenIndex] = sortedRaven.indexOf(ravenBids[i]) + 1;
+	}
+	for(var i = 0; i < players.length; i++){
+		for(var j = i; j < players.length; j++){
+			if(players[j][playerTrackIndex][trackThroneIndex] == i+1){
+				var tmpPlayer = players[j];
+				players[j] = players[i];
+				players[i] = tmpPlayer;
+			}
+		}
+	}
+}
+
+function playerCanMuster(){
+	var name = document.getElementById("playerName").innerHTML.split(" ")[0];
+	for(var i = 0; i < zones.length; i++){
+		var jsonData = JSON.parse(document.getElementById(zones[i]).value);
+		if(hasMusteredInZones.indexOf(zones[i])==-1 && name==jsonData.name && parseInt(jsonData.castleSize) > 0){
+			return true;
+		}
+	}
+	return false;
+}
+
+function parseMusteredArmy(){
+	var musterOption = document.getElementById("musterableUnits").value;
+	if(musterOption=="1 Footman"){
+		return [1,0,0,0,0];
+	}
+	if(musterOption=="1 Knight (Upgrade Footman)"){
+		return [0,1,0,0,1];
+	}
+	if(musterOption=="1 Seige Tower (Upgrade Footman)"){
+		return [0,0,1,0,1];
+	}
+	if(musterOption=="2 Knights (Upgrade Footmen)"){
+		return [0,2,0,0,2];
+	}
+	if(musterOption=="2 Seige Towers (Upgrade Footmen)"){
+		return [0,0,2,0,2];
+	}
+	if(musterOption=="1 Knight (Upgrade Footman) and 1 Seige Tower (Upgrade Footman)"){
+		return [0,1,1,0,2];
+	}
+	if(musterOption=="1 Knight"){
+		return [0,1,0,0,0];
+	}
+	if(musterOption=="1 Seige Tank"){
+		return [0,0,1,0,0];
+	}
+	if(musterOption=="2 Footmen"){
+		return [2,0,0,0,0];
+	}
+	if(musterOption=="1 Boat"){
+		return [0,0,0,1,0];
+	}
+	if(musterOption=="2 Boats"){
+		return [0,0,0,2,0];
+	}
+	return [0,0,0,0,0];
+}
+
+function completedMusters(){
+	for(var i = 0; i < zones.length; i++){
+		var jsonData = JSON.parse(document.getElementById(zones[i]).value);
+		if(hasMusteredInZones.indexOf(zones[i])==-1 && "Locals"!=jsonData.name && parseInt(jsonData.castleSize) > 0){
+			return false;
+		}
+	}
+	return true;
+}
+
+function getUsableAttacks(){
+	//remove old options
+	while(document.getElementById("usableAttacks").lastChild){
+		document.getElementById("usableAttacks").removeChild(document.getElementById("usableAttacks").lastChild);
+	}
+	var atLeastOneAttack = false;
+	for(var i = 0; i < zones.length; i++){
+		jsonData = JSON.parse(document.getElementById(zones[i]).value);
+		if(jsonData.name == players[currentPlayerIndex][playerNameIndex] && jsonData.tile.indexOf("Attack") > -1){
+			var opt = document.createElement("option");
+			opt.text = zones[i];//jsonData.tile;
+			opt.value = zones[i];
+			document.getElementById("usableAttacks").appendChild(opt);
+			atLeastOneAttack = true;
+		}
+	}
+	return atLeastOneAttack;
+}
+
+function updateAttackableZones(){
+	//remove old options
+	while(document.getElementById("attackableZones").lastChild){
+		document.getElementById("attackableZones").removeChild(document.getElementById("attackableZones").lastChild);
+	}
+	while(document.getElementById("attackingFootmen").lastChild){
+		document.getElementById("attackingFootmen").removeChild(document.getElementById("attackingFootmen").lastChild);
+	}
+	while(document.getElementById("attackingKnights").lastChild){
+		document.getElementById("attackingKnights").removeChild(document.getElementById("attackingKnights").lastChild);
+	}
+	while(document.getElementById("attackingSeige").lastChild){
+		document.getElementById("attackingSeige").removeChild(document.getElementById("attackingSeige").lastChild);
+	}
+	while(document.getElementById("attackingBoats").lastChild){
+		document.getElementById("attackingBoats").removeChild(document.getElementById("attackingBoats").lastChild);
+	}
+	var attackFromZone = (document.getElementById("usableAttacks").value);
+	var jsonData = JSON.parse(document.getElementById(attackFromZone).value);
+	var adjacentZones = jsonData.adjacentZones.split(",");
+	for(var i = 0; i < adjacentZones.length; i++){
+		var adjacentJson = JSON.parse(document.getElementById(adjacentZones[i]).value);
+		if(jsonData.zoneType==adjacentJson.zoneType){
+			var opt = document.createElement("option");
+			opt.text = adjacentZones[i];
+			opt.value = adjacentZones[i];
+			document.getElementById("attackableZones").appendChild(opt);
+		}
+		else if(jsonData.zoneType=="land" && adjacentJson.zoneType=="sea" && adjacentJson.name == players[currentPlayerIndex][playerNameIndex]){
+			var seaAdjacentZones = adjacentJson.adjacentZones.split(",");
+			for(var j = 0; j < seaAdjacentZones.length; j++){
+				if(adjacentZones.indexOf(seaAdjacentZones[j]) == -1){
+					adjacentZones.push(seaAdjacentZones[j]);
+				}
+			}
+		}
+	}
+	var opt = document.createElement("option");
+	opt.text = "Do Nothing";
+	opt.value = "Do Nothing";
+	document.getElementById("attackableZones").appendChild(opt);
+	for(var i = 0; i <= jsonData.defendingArmy[armyFootmanIndex]; i++){
+		var opt = document.createElement("option");
+		opt.text = i;
+		opt.value = i;
+		document.getElementById("attackingFootmen").appendChild(opt);
+	}
+	for(var i = 0; i <= jsonData.defendingArmy[armyKnightIndex]; i++){
+		var opt = document.createElement("option");
+		opt.text = i;
+		opt.value = i;
+		document.getElementById("attackingKnights").appendChild(opt);
+	}
+	for(var i = 0; i <= jsonData.defendingArmy[armySeigeIndex]; i++){
+		var opt = document.createElement("option");
+		opt.text = i;
+		opt.value = i;
+		document.getElementById("attackingSeige").appendChild(opt);
+	}
+	for(var i = 0; i <= jsonData.defendingArmy[armyBoatIndex]; i++){
+		var opt = document.createElement("option");
+		opt.text = i;
+		opt.value = i;
+		document.getElementById("attackingBoats").appendChild(opt);
+	}
+}
+
+function useAttack(){
+	var attackFromZone = (document.getElementById("usableAttacks").value);
+	var attackToZone = (document.getElementById("attackableZones").value);
+	var attackingFootmen = document.getElementById("attackingFootmen").value;
+	var attackingKnights = document.getElementById("attackingKnights").value;
+	var attackingSeige = document.getElementById("attackingSeige").value;
+	var attackingBoats = document.getElementById("attackingBoats").value;
+	var attackCombatBoost;//set from tile
+	if(attackToZone.indexOf("Do Nothing") == -1 && (attackingFootmen > 0 || attackingKnights > 0 || attackingSeige > 0 || attackingBoats > 0)){
+		attackedZoneJson = JSON.parse(document.getElementById(attackToZone).value)
+		inFight = false;
+		if(attackedZoneJson.name==players[currentPlayerIndex][playerNameIndex] || attackedZoneJson.name=="Locals"){//zone is already mine, or zone is unowned
+			moveArmyOntoZone(attackToZone, [attackingFootmen, attackingKnights, attackingSeige, attackingBoats]);
+			moveArmyOutOfZone(attackFromZone, [attackingFootmen, attackingKnights, attackingSeige, attackingBoats]);
+		}
+		else if(false){//zone is owned by another player but has no army
+			//currently this functionality is not in the game but room is left in case we add it
+		}
+		else{//we are attacking an enemy player's army!
+			demandSupport(attackToZone,attackFromZone, [attackingFootmen, attackingKnights, attackingSeige, attackingBoats]);
+		}
+	}
+	if(!inFight){
+		makeTileNothing(attackFromZone);
+	}
+}
+
+function demandSupport(attackToZone, attackFromZone, attackingArmy){
+	$("#support").show();
+	$("#currentPlayerText").hide();
+	$("#playerName").hide();
+	$("#attackDiv").hide();
+	$("#endTurn").hide();
+	var attackingZoneJson = JSON.parse(document.getElementById(attackFromZone).value);
+	var defendingZoneJson = JSON.parse(document.getElementById(attackToZone).value);
+	document.getElementById("currentRound").innerHTML = "Current Round: Support!";
+	document.getElementById("roundInfo").innerHTML = attackingZoneJson.name + " from " + attackFromZone + " is attcking " + defendingZoneJson.name + " in " + attackToZone + ". Players in adjacent zones who have placed support tiles may decide to lend aid in the battle.";
+	inFight = true;
+	adjacentFightZones = JSON.parse(document.getElementById(attackToZone).value).adjacentZones.split(",");
+	askForSupportIndex = 0;
+	attackerSupportPower = 0;
+	defenderSupportPower = 0;
+	attackerZone = attackFromZone;
+	defenderZone = attackToZone;
+	attackerArmy = attackingArmy;
+	askForSupport();
+}
+
+function askForSupport(){
+	if(askForSupportIndex >= adjacentFightZones.length){
+		$("#support").hide();
+		fight(defenderZone,attackerZone,attackerArmy);
+	}
+	else{
+	var supZone = adjacentFightZones[askForSupportIndex];
+	var supZoneJson = JSON.parse(document.getElementById(supZone).value);
+	var attackedZoneJson = JSON.parse(document.getElementById(defenderZone).value);
+		if((supZoneJson.zoneType=="sea" || (supZoneJson.zoneType=="land" && attackedZoneJson.zoneType=="land")) && (supZoneJson.name!="Locals" && supZoneJson.tile.indexOf("Support") > -1)){
+			document.getElementById("supportingPlayer").innerHTML = supZoneJson.name;
+			document.getElementById("supportingZone").innerHTML = supZone;
+			populateSupportOptions();
+		}	
+		else{
+			askForSupportIndex++;
+			askForSupport();
+		}
+	}
+}
+
+function populateSupportOptions(){
+	//remove old options
+	while(document.getElementById("decidingToSupport").lastChild){
+		document.getElementById("decidingToSupport").removeChild(document.getElementById("decidingToSupport").lastChild);
+	}
+	var attackerJson = JSON.parse(document.getElementById(attackerZone).value);
+	var defenderJson = JSON.parse(document.getElementById(defenderZone).value);
+	var opt = document.createElement("option");
+	opt.text = attackerJson.name;
+	opt.value = attackerJson.name;
+	document.getElementById("decidingToSupport").appendChild(opt);
+	var opt = document.createElement("option");
+	opt.text = defenderJson.name;
+	opt.value = defenderJson.name;
+	document.getElementById("decidingToSupport").appendChild(opt);
+	var opt = document.createElement("option");
+	opt.text = "Nobody";
+	opt.value = "Nobody";
+	document.getElementById("decidingToSupport").appendChild(opt);
+}
+
+function lendSupport(){
+	var supporting = document.getElementById("decidingToSupport").value;
+	var attackerJson = JSON.parse(document.getElementById(attackerZone).value);
+	var defenderJson = JSON.parse(document.getElementById(defenderZone).value);
+	var supporterJson = JSON.parse(document.getElementById(document.getElementById("supportingZone").innerHTML).value);
+	var attackTileBonus = parseInt(supporterJson.tile.split("_")[2]);
+	var supportingArmy = supporterJson.defendingArmy;
+	var supportTileBonus = parseInt(supporterJson.tile.split("_")[2]);
+	var supportPower = parseInt(supportingArmy[armyFootmanIndex]) + 2*parseInt(supportingArmy[armyKnightIndex]) + parseInt(supportingArmy[armyBoatIndex]) + parseInt(supportTileBonus);
+	if(supporting==attackerJson.name){
+		attackerSupportPower+=supportPower;
+	}
+	else if(supporting==defenderJson.name){
+		defenderSupportPower+=supportPower;
+	}
+	askForSupportIndex++;
+	askForSupport();
+}
+
+function fight(attackToZone, attackFromZone, attackingArmy){
+	var attackingZoneJson = JSON.parse(document.getElementById(attackFromZone).value);
+	var defendingZoneJson = JSON.parse(document.getElementById(attackToZone).value);
+	document.getElementById("currentRound").innerHTML = "Current Round: BATTLE!";
+	document.getElementById("roundInfo").innerHTML = attackingZoneJson.name + " from " + attackFromZone + " is attcking " + defendingZoneJson.name + " in " + attackToZone + ". Each player must select the general they want to use.";
+	$("#currentPlayerText").show();
+	$("#playerName").show();
+	$("#fight").show();
+	$("#attackDiv").hide();
+	$("#endTurn").hide();
+	inFight = true;
+	attackerSelecting = true;
+	attackerZone = attackFromZone;
+	defenderZone = attackToZone;
+	attackerArmy = attackingArmy;
+	var attackSwordBonus = 0;
+	var defendSwordBonud = 0;
+	for(var i = 0; i < players.length; i++){
+		if(players[i][playerNameIndex]==attackingZoneJson.name){
+			if(players[i][playerTrackIndex][trackSwordIndex]==1){
+				attackSwordBonus = 1;
+			}
+			else{
+				attackSwordBonus = 0;
+			}
+		}
+		if(players[i][playerNameIndex]==defendingZoneJson.name){
+			if(players[i][playerTrackIndex][trackSwordIndex]==1){
+				defendSwordBonus = 1;
+			}
+			else{
+				defendSwordBonus = 0;
+			}
+		}
+	}
+	var attackTileBonus = parseInt(attackingZoneJson.tile.split("_")[2]);
+	attackerBaseCombatPower = parseInt(attackingArmy[armyFootmanIndex]) + 2*parseInt(attackingArmy[armyKnightIndex]) + parseInt(attackingArmy[armyBoatIndex]) + parseInt(attackTileBonus) + parseInt(attackerSupportPower) + parseInt(attackSwordBonus);
+	if(defendingZoneJson.castleSize > 0){
+		attackerBaseCombatPower += 4*parseInt(attackingArmy[armySeigeIndex]);
+	}
+	defenderBaseCombatPower = parseInt(defendingZoneJson.defendingArmy[armyFootmanIndex]) + 2*parseInt(defendingZoneJson.defendingArmy[armyKnightIndex]) + parseInt(defendingZoneJson.defendingArmy[armyBoatIndex]) + parseInt(defenderSupportPower) + parseInt(defendSwordBonus);
+	if(defendingZoneJson.tile.indexOf("Defense") > -1){
+		defenderBaseCombatPower += parseInt(defendingZoneJson.tile.split("_")[2]);
+	}
+	loadGenerals();
+	updateTotalCombatPower();
+	document.getElementById("attackerBaseCombatPower").innerHTML = attackerBaseCombatPower;
+	document.getElementById("defenderBaseCombatPower").innerHTML = defenderBaseCombatPower;
+	makeTileNothing(attackFromZone);
+}
+
+function loadGenerals(){
+	//remove old options
+	while(document.getElementById("availableGenerals").lastChild){
+		document.getElementById("availableGenerals").removeChild(document.getElementById("availableGenerals").lastChild);
+	}
+	var name = document.getElementById("playerName").innerHTML.split(" ")[0];
+	for(var i = 0; i < players.length; i++){
+		if(name==players[i][playerNameIndex]){
+			if(players[i][playerAvaiableGeneralsIndex].length == 0){
+				players[i][playerAvaiableGeneralsIndex] = maxGenerals[i];
+			}
+			for(var j = 0; j < players[i][playerAvaiableGeneralsIndex].length; j++){
+				var opt = document.createElement("option");
+				opt.text = players[i][playerAvaiableGeneralsIndex][j][generalNameIndex];
+				opt.value = players[i][playerAvaiableGeneralsIndex][j][generalNameIndex];
+				document.getElementById("availableGenerals").appendChild(opt);
+			}
+		}
+	}
+}
+
+function updateTotalCombatPower(){
+	var playerName = document.getElementById("playerName").innerHTML.split(" ")[0];
+	var generalName = document.getElementById("availableGenerals").value;
+	var generalPower = 0;
+	for(var i = 0; i < players.length; i++){
+		if(playerName==players[i][playerNameIndex]){
+			for(var j = 0; j < players[i][playerAvaiableGeneralsIndex].length; j++){
+				if(generalName==players[i][playerAvaiableGeneralsIndex][j][generalNameIndex]){
+					generalPower = players[i][playerAvaiableGeneralsIndex][j][generalCombatPowerIndex];
+				}
+			}
+		}
+	}
+	if(attackerSelecting){
+		document.getElementById("combatPower").innerHTML = parseInt(generalPower) + parseInt(attackerBaseCombatPower);
+	}
+	else{
+		document.getElementById("combatPower").innerHTML = parseInt(generalPower) + parseInt(defenderBaseCombatPower);
+	}
+}
+
+function useGeneral(){
+	if(attackerSelecting){
+		attackingGeneralName = document.getElementById("availableGenerals").value;
+		var playerName = document.getElementById("playerName").innerHTML.split(" ")[0];
+		for(var i = 0; i < players.length; i++){
+			if(playerName==players[i][playerNameIndex]){
+				for(var j = 0; j < players[i][playerAvaiableGeneralsIndex].length; j++){
+					if(attackingGeneralName==players[i][playerAvaiableGeneralsIndex][j][generalNameIndex]){
+						players[i][playerAvaiableGeneralsIndex].splice(j,1);
+					}
+				}
+			}
+		}
+		attackerTotalPower = parseInt(document.getElementById("combatPower").innerHTML);
+		attackerSelecting = false;
+		document.getElementById("playerName").innerHTML = JSON.parse(document.getElementById(defenderZone).value).name;
+		loadGenerals();
+		updateTotalCombatPower();
+	}
+	else{
+		defendingGeneralName = document.getElementById("availableGenerals").value;
+		var playerName = document.getElementById("playerName").innerHTML.split(" ")[0];
+		for(var i = 0; i < players.length; i++){
+			if(playerName==players[i][playerNameIndex]){
+				for(var j = 0; j < players[i][playerAvaiableGeneralsIndex].length; j++){
+					if(defendingGeneralName==players[i][playerAvaiableGeneralsIndex][j][generalNameIndex]){
+						players[i][playerAvaiableGeneralsIndex].splice(j,1);
+					}
+				}
+			}
+		}
+		var defenderTotalPower = parseInt(document.getElementById("combatPower").innerHTML);
+		var defenderZoneJson =  JSON.parse(document.getElementById(defenderZone).value);
+		var attackerZoneJson =  JSON.parse(document.getElementById(attackerZone).value);
+		if(parseInt(attackerTotalPower) > parseInt(defenderTotalPower) || (parseInt(attackerTotalPower) == parseInt(defenderTotalPower && attackerWinsTies()))){//if attackingPlayer wins
+			alert("THE ATTACKER HAS WON!");
+			replaceInPlayerHand(defenderZoneJson.name, defenderZoneJson.defendingArmy);//make units availabe for play once more
+			moveArmyOutOfZone(defenderZone, defenderZoneJson.defendingArmy);//remove defending army from losing zone
+			moveArmyOntoZone(defenderZone, attackerArmy);//move attacking army onto new zone...
+			moveArmyOutOfZone(attackerZone, attackerArmy);//... and out of old zone
+			makeTileNothing(defenderZone);//remove tile currently played on losing zone
+		}
+		else{//if defendingPlayer wins
+			alert("THE DEFENDER HAS WON!");
+			replaceInPlayerHand(attackerZoneJson.name, attackerArmy);//make units availabe for play once more
+			moveArmyOutOfZone(attackerZone, attackerArmy);//kill off attacking army from old zone
+		}
+		//reset to attacking army
+		currentPlayerIndex = ((currentPlayerIndex+1)%players.length);//increment currentPlayer
+		document.getElementById("playerName").innerHTML = players[currentPlayerIndex][playerNameIndex] + " (" + players[currentPlayerIndex][playerPowerInHandIndex] + " Power)" + " (" + players[currentPlayerIndex][playerPowerInHandIndex] + " Power)";
+		document.getElementById("currentRound").innerHTML = "Current Round: Attack";
+		document.getElementById("roundInfo").innerHTML = "";
+		$("#fight").hide();
+		$("#currentPlayer").show();
+		$("#zones").show();
+		$("#endTurn").show();
+		$("#attackDiv").show();
+		if(getUsableAttacks() != false){//fill a select with attacks that can be used
+			attackUsed = true;
+			updateAttackableZones();//fill another select with where the attack from the first select can be used on (all adjacent zones of the same type or chain through sea)
+		}
+		else{
+			attackUsed = false;
+			endTurn();
+		}
+	}
+}
+
+function attackerWinsTies(){
+	var attackerName = JSON.parse(document.getElementById(attackerZone).value).name;
+	var defenderName = JSON.parse(document.getElementById(defenderZone).value).name;
+	var defenderSwordPosition;
+	var attackerSwordPosition;
+	for(var i = 0; i < players.length; i++){
+		if(attackerName == players[i][playerNameIndex]){
+			attackerSwordPosition = players[i][playerTrackIndex][trackSwordIndex];
+		}
+		if(defenderName == players[i][playerNameIndex]){
+			defenderSwordPosition = players[i][playerTrackIndex][trackSwordIndex];
+		}
+	}
+	return parseInt(attackerSwordPosition) < parseInt(defenderSwordPosition);
+}
+
+function replaceInPlayerHand(name, army){
+	for(var i = 0; i < players.length; i++){
+		if(players[i][playerNameIndex] == name){
+			for(var j = 0; j < players[i][playerAvailableArmyIndex].length; j++){
+				players[i][playerAvailableArmyIndex][j] += parseInt(army[j]);
+			}
+		}
+	}
+}
+
+function moveArmyOntoZone(zone, army){
+	var jsonData = JSON.parse(document.getElementById(zone).value);
+	var newName = players[currentPlayerIndex][playerNameIndex];
+	var finalArmy = [parseInt(jsonData.defendingArmy[armyFootmanIndex]) + parseInt(army[armyFootmanIndex]), parseInt(jsonData.defendingArmy[armyKnightIndex]) + parseInt(army[armyKnightIndex]), parseInt(jsonData.defendingArmy[armySeigeIndex]) + parseInt(army[armySeigeIndex]), parseInt(jsonData.defendingArmy[armyBoatIndex]) + parseInt(army[armyBoatIndex])];
+	var newData = createZoneJSON(newName, jsonData.tile, jsonData.powerBonus, jsonData.castleSize, jsonData.supplyBonus, jsonData.zoneType, finalArmy, jsonData.adjacentZones, jsonData.naturalDefence);
+	document.getElementById(zone).value = newData;
+	zoneJSONToHTML(document.getElementById(zone));//ZoneInfo Div
+}
+
+function moveArmyOutOfZone(zone, army){
+	var jsonData = JSON.parse(document.getElementById(zone).value);
+	var newName = jsonData.name;
+	var finalArmy = [parseInt(jsonData.defendingArmy[armyFootmanIndex]) - parseInt(army[armyFootmanIndex]), parseInt(jsonData.defendingArmy[armyKnightIndex]) - parseInt(army[armyKnightIndex]), parseInt(jsonData.defendingArmy[armySeigeIndex]) - parseInt(army[armySeigeIndex]), parseInt(jsonData.defendingArmy[armyBoatIndex]) - parseInt(army[armyBoatIndex])];
+	if(finalArmy[armyFootmanIndex] == 0 && finalArmy[armyKnightIndex] == 0 && finalArmy[armySeigeIndex] == 0 && finalArmy[armyBoatIndex] == 0){
+		newName = "Locals";
+	}
+	var newData = createZoneJSON(newName, jsonData.tile, jsonData.powerBonus, jsonData.castleSize, jsonData.supplyBonus, jsonData.zoneType, finalArmy, jsonData.adjacentZones, jsonData.naturalDefence);
+	document.getElementById(zone).value = newData;
+	zoneJSONToHTML(document.getElementById(zone));//ZoneInfo Div
+}
+
+function noAttacksOnBoard(){
+	for(var i = 0; i < zones.length; i++){
+		jsonData = JSON.parse(document.getElementById(zones[i]).value);
+		if(jsonData.tile.indexOf("Attack") > -1){
+			return false;
+		}
+	}
+	return true;
+
+}
+
+function getUsableRaids(){
+	//remove old options
+	while(document.getElementById("usableRaids").lastChild){
+		document.getElementById("usableRaids").removeChild(document.getElementById("usableRaids").lastChild);
+	}
+	var atLeastOneRaid = false;
+	for(var i = 0; i < zones.length; i++){
+		jsonData = JSON.parse(document.getElementById(zones[i]).value);
+		if(jsonData.name == players[currentPlayerIndex][playerNameIndex] && jsonData.tile.indexOf("Raid") > -1){
+			var opt = document.createElement("option");
+			opt.text = zones[i];//jsonData.tile;
+			opt.value = zones[i];
+			document.getElementById("usableRaids").appendChild(opt);
+			atLeastOneRaid = true;
+		}
+	}
+	return atLeastOneRaid;
+}
+
+function updateRaidableZones(){
+	//remove old options
+	while(document.getElementById("raidableZones").lastChild){
+		document.getElementById("raidableZones").removeChild(document.getElementById("raidableZones").lastChild);
+	}
+	var raidFromZone = (document.getElementById("usableRaids").value);
+	var jsonData = JSON.parse(document.getElementById(raidFromZone).value);
+	var adjacentZones = jsonData.adjacentZones.split(",");
+	for(var i = 0; i < adjacentZones.length; i++){
+		var adjacentJson = JSON.parse(document.getElementById(adjacentZones[i]).value);
+		if(jsonData.zoneType=="sea" || (jsonData.zoneType=="land" && adjacentJson.zoneType=="land")){
+			if(adjacentJson.tile.indexOf("Raid") > -1 || adjacentJson.tile.indexOf("Power") > -1|| adjacentJson.tile.indexOf("Support") > -1){
+				var opt = document.createElement("option");
+				opt.text = adjacentZones[i];
+				opt.value = adjacentZones[i];
+				document.getElementById("raidableZones").appendChild(opt);
+			}
+		}
+	}
+	var opt = document.createElement("option");
+	opt.text = "Do Nothing";
+	opt.value = "Do Nothing";
+	document.getElementById("raidableZones").appendChild(opt);
+}
+
+function useRaid(){
+	var raidFromZone = (document.getElementById("usableRaids").value);
+	var raidToZone = (document.getElementById("raidableZones").value);
+	makeTileNothing(raidFromZone);
+	if(raidToZone.indexOf("Do Nothing") == -1){
+		makeTileNothing(raidToZone);
+	}
+}
+
+function makeTileNothing(zone){
+	var jsonData = JSON.parse(document.getElementById(zone).value);
+	var newData = createZoneJSON(jsonData.name, "Nothing", jsonData.powerBonus, jsonData.castleSize, jsonData.supplyBonus, jsonData.zoneType, jsonData.defendingArmy, jsonData.adjacentZones, jsonData.naturalDefence);
+	document.getElementById(zone).value = newData;
+	zoneJSONToHTML(document.getElementById(zone));//ZoneInfo Div
+}
+
+function noRaidsOnBoard(){
+	for(var i = 0; i < zones.length; i++){
+		jsonData = JSON.parse(document.getElementById(zones[i]).value);
+		if(jsonData.tile.indexOf("Raid") > -1){
+			return false;
+		}
+	}
+	return true;
+	
+}
+
+function playTile(){
+	if(currentRound == tilePlacementRound){
+		jsonData = JSON.parse(this.value);
+		if(jsonData.name == players[currentPlayerIndex][playerNameIndex] && !(jsonData.zoneType == "sea" && document.getElementById("playingTile").value.indexOf("Power") > -1)) {
+			if (jsonData.tile !== "Nothing"){
+				//alert(jsonData);
+				addTileMethod(jsonData.tile);
+			}
+			var newData = createZoneJSON(jsonData.name, document.getElementById("playingTile").value, jsonData.powerBonus, jsonData.castleSize, jsonData.supplyBonus, jsonData.zoneType, jsonData.defendingArmy, jsonData.adjacentZones, jsonData.naturalDefence);
+			this.value = newData;
+
+
+			removeTileMethod();
+
+			zoneJSONToHTML(this);//ZoneInfo Div
+		}
+
+		document.getElementById("remainingStars").innerHTML = "Available Stars : " + getNumberOfStars();
+	}
+}
+
+function getNumberOfStars(){
+	var positionOnRavenTrack = players[currentPlayerIndex][playerTrackIndex][trackRavenIndex];
+	if(positionOnRavenTrack==1){
+		return 3 - usedStars;
+	}
+	else if(positionOnRavenTrack==2){
+		return 3 - usedStars;
+	}
+	else if(positionOnRavenTrack==3){
+		return 2 - usedStars;
+	}
+	else if(positionOnRavenTrack==4){
+		return 1 - usedStars;
+	}
+	else{
+		return 0;
+	}
+}
+
+function initializeBoard(){
+	currentPlayerIndex = 0;
+	gameTurnNumber = 1;
+	for(var i = 0; i < players.length;i++){
+		players[i][playerPowerInHandIndex] = 10;
+	}
+	randomizeTracksByPower();
+	updatePlayerOrder();
+	for(var i = 0; i < players.length;i++){
+		players[i][playerPowerInHandIndex] = 5;
+	}
+	var initialConfigJsons  = [createZoneJSON("Locals","Nothing",1,0,0,"land",[0,0,0,0],["Karhold","BayOfIce","TheShiveringSea","Winterfell"],0),//CastleBlack
+					createZoneJSON("Locals","Nothing",1,0,0,"land",[0,0,0,0],["CastleBlack","Winterfell","TheShiveringSea"],0),//Karhold
+					createZoneJSON("Stark","Nothing",1,2,1,"land",[1,1,0,0],["CastleBlack","Karhold","BayOfIce","TheShiveringSea","TheStonyShore","WhiteHarbor","MoatCailin"],0),//Winterfell
+					createZoneJSON("Locals","Nothing",0,0,1,"land",[0,0,0,0],["BayOfIce","Winterfell"],0),//TheStonyShore
+					createZoneJSON("Stark","Nothing",0,1,0,"land",[1,0,0,0],["MoatCailin","WidowsWatch","Winterfell","TheShiveringSea","TheNarrowSea"],0),//WhiteHarbor
+					createZoneJSON("Locals","Nothing",0,0,1,"land",[0,0,0,0],["WhiteHarbor","TheShiveringSea","TheNarrowSea"],0),//WidowsWatch
+					createZoneJSON("Locals","Nothing",0,1,0,"land",[0,0,0,0],["WhiteHarbor","Winterfell","GreywaterWatch","Seagard","TheTwins","TheNarrowSea"],0),//MoatCailin
+					createZoneJSON("Locals","Nothing",0,0,1,"land",[0,0,0,0],["BayOfIce","MoatCailin","FlintsFinger","IronmansBay","Seagard"],0),//GreywaterWatch
+					createZoneJSON("Locals","Nothing",0,1,0,"land",[0,0,0,0],["BayOfIce","SunsetSea","IronmansBay","GreywaterWatch"],0),//FlintsFinger
+					createZoneJSON("Locals","Nothing",1,2,1,"land",[0,0,0,0],["IronmansBay"],0),//Pyke
+					createZoneJSON("Locals","Nothing",1,2,1,"land",[0,0,0,0],["IronmansBay","GreywaterWatch","MoatCailin","TheTwins","Riverrun"],0),//Seagard
+					createZoneJSON("Locals","Nothing",1,0,0,"land",[0,0,0,0],["Seagard","MoatCailin","TheNarrowSea","TheFingers","TheMountainsOfTheMoon"],0),//TheTwins
+					createZoneJSON("Locals","Nothing",0,0,1,"land",[0,0,0,0],["TheNarrowSea","TheTwins","TheMountainsOfTheMoon"],0),//TheFingers
+					createZoneJSON("Locals","Nothing",0,0,1,"land",[0,0,0,0],["TheNarrowSea","TheTwins","TheFingers","TheEyrie","CrackclawPoint"],0),//TheMountainsOfTheMoon
+					createZoneJSON("Locals","Nothing",1,1,1,"land",[0,0,0,0],["TheNarrowSea","TheMountainsOfTheMoon"],0),//TheEyrie
+					createZoneJSON("Locals","Nothing",1,2,1,"land",[0,0,0,0],["Seagard","IronmansBay","TheGoldenSound","Lannisport","StoneySept","Harrenhal"],0),//Riverrun
+					createZoneJSON("Lannister","Nothing",0,2,2,"land",[1,1,0,0],["TheGoldenSound","Riverrun","StoneySept","SearoadMarches"],0),//Lannisport
+					createZoneJSON("Locals","Nothing",1,1,0,"land",[0,0,0,0],["Riverrun","StoneySept","Blackwater","CrackclawPoint"],0),//Harrenhal
+					createZoneJSON("Lannister","Nothing",1,0,0,"land",[1,0,0,0],["Riverrun","Lannisport","SearoadMarches","Blackwater","Harrenhal"],0),//StoneySept
+					createZoneJSON("Locals","Nothing",0,1,0,"land",[0,0,0,0],["TheNarrowSea","TheMountainsOfTheMoon","Harrenhal","Blackwater","KingsLanding","BlackwaterBay","ShipbreakerBay"],0),//CrackclawPoint
+					createZoneJSON("Targaryen","Nothing",1,2,1,"land",[1,1,0,0],["ShipbreakerBay"],0),//Dragonstone
+					createZoneJSON("Locals","Nothing",0,0,1,"land",[0,0,0,0],["SunsetSea","TheGoldenSound","WestSummerSea","Lannisport","StoneySept","Blackwater","TheReach","Highgarden"],0),//SearoadMarches
+					createZoneJSON("Locals","Nothing",0,0,2,"land",[0,0,0,0],["SearoadMarches","StoneySept","Harrenhal","CrackclawPoint","KingsLanding","TheReach"],0),//Blackwater
+					createZoneJSON("Locals","Nothing",2,2,0,"land",[0,0,0,0],["Blackwater","CrackclawPoint","BlackwaterBay","Kingswood","TheReach"],0),//KingsLanding
+					createZoneJSON("Targaryen","Nothing",1,0,1,"land",[1,0,0,0],["TheReach","KingsLanding","BlackwaterBay","ShipbreakerBay","StormsEnd","TheBoneway"],0),//Kingswood
+					createZoneJSON("Locals","Nothing",0,2,2,"land",[0,0,0,0],["SearoadMarches","TheReach","DornishMarches","Oldtown","WestSummerSea","RedwyneStraights"],0),//Highgarden
+					createZoneJSON("Locals","Nothing",0,1,0,"land",[0,0,0,0],["Highgarden","SearoadMarches","Blackwater","KingsLanding","Kingswood","TheBoneway","DornishMarches"],0),//TheReach
+					createZoneJSON("Locals","Nothing",1,0,0,"land",[0,0,0,0],["Highgarden","TheReach","TheBoneway","Oldtown","PrincesPass","ThreeTowers"],0),//DornishMarches
+					createZoneJSON("Locals","Nothing",0,2,0,"land",[0,0,0,0],["Highgarden","ThreeTowers","DornishMarches","RedwyneStraights"],0),//Oldtown
+					createZoneJSON("Locals","Nothing",1,0,0,"land",[0,0,0,0],["Kingswood","TheReach","DornishMarches","PrincesPass","Yronwood","SeaOfDorne","StormsEnd"],0),//TheBoneway
+					createZoneJSON("Locals","Nothing",0,1,0,"land",[0,0,0,0],["Kingswood","TheBoneway","SeaOfDorne","ShipbreakerBay","EastSummerSea"],0),//StormsEnd
+					createZoneJSON("Locals","Nothing",0,0,1,"land",[0,0,0,0],["Oldtown","PrincesPass","DornishMarches","WestSummerSea","RedwyneStraights"],0),//ThreeTowers
+					createZoneJSON("Locals","Nothing",1,0,1,"land",[0,0,0,0],["ThreeTowers","TheBoneway","DornishMarches","Yronwood","Starfall"],0),//PrincesPass
+					createZoneJSON("Locals","Nothing",1,0,0,"land",[0,0,0,0],["WestSummerSea","RedwyneStraights"],0),//TheArbor
+					createZoneJSON("Locals","Nothing",0,1,1,"land",[0,0,0,0],["PrincesPass","Yronwood","SaltShore","EastSummerSea","WestSummerSea"],0),//Starfall
+					createZoneJSON("Locals","Nothing",0,1,0,"land",[0,0,0,0],["Starfall","PrincesPass","TheBoneway","SeaOfDorne","Sunspear","SaltShore"],0),//Yronwood
+					createZoneJSON("Martell","Nothing",0,0,1,"land",[1,0,0,0],["Starfall","Yronwood","Sunspear","EastSummerSea"],0),//SaltShore
+					createZoneJSON("Martell","Nothing",1,2,1,"land",[1,1,0,0],["SaltShore","Yronwood","SeaOfDorne","EastSummerSea"],0),//Sunspear
+					createZoneJSON("Locals","Nothing",0,0,0,"sea",[0,0,0,0],["Starfall","WestSummerSea","StormsEnd","SeaOfDorne","Sunspear","SaltShore","ShipbreakerBay"],0),//EastSummerSea
+					createZoneJSON("Locals","Nothing",0,0,0,"sea",[0,0,0,0],["Starfall","EastSummerSea","ThreeTowers","RedwyneStraights","TheArbor","Highgarden","SearoadMarches","SunsetSea"],0),//WestSummerSea
+					createZoneJSON("Locals","Nothing",0,0,0,"sea",[0,0,0,0],["WestSummerSea","Oldtown","ThreeTowers","TheArbor","Highgarden"],0),//RedwyneStraights
+					createZoneJSON("Martell","Nothing",0,0,0,"sea",[0,0,0,1],["Sunspear","Yronwood","TheBoneway","StormsEnd","EastSummerSea"],0),//SeaOfDorne
+					createZoneJSON("Targaryen","Nothing",0,0,0,"sea",[0,0,0,2],["EastSummerSea","StormsEnd","Kingswood","BlackwaterBay","CrackclawPoint","TheNarrowSea"],0),//ShipbreakerBay
+					createZoneJSON("Locals","Nothing",0,0,0,"sea",[0,0,0,0],["ShipbreakerBay","Kingswood","KingsLanding","CrackclawPoint"],0),//BlackwaterBay
+					createZoneJSON("Lannister","Nothing",0,0,0,"sea",[0,0,0,1],["SunsetSea","IronmansBay","Riverrun","Lannisport","SearoadMarches"],0),//TheGoldenSound
+					createZoneJSON("Locals","Nothing",0,0,0,"sea",[0,0,0,0],["WestSummerSea","SearoadMarches","TheGoldenSound","IronmansBay","FlintsFinger","BayOfIce"],0),//SunsetSea
+					createZoneJSON("Locals","Nothing",0,0,0,"sea",[0,0,0,0],["TheGoldenSound","SunsetSea","FlintsFinger","GreywaterWatch","Seagard","Riverrun","Pyke"],0),//IronmansBay
+					createZoneJSON("Locals","Nothing",0,0,0,"sea",[0,0,0,0],["ShipbreakerBay","CrackclawPoint","TheMountainsOfTheMoon","TheEyrie","TheFingers","TheTwins","MoatCailin","WhiteHarbor","WidowsWatch","TheShiveringSea"],0),//TheNarrowSea
+					createZoneJSON("Locals","Nothing",0,0,0,"sea",[0,0,0,0],["SunsetSea","FlintsFinger","GreywaterWatch","Winterfell","TheStonyShore","CastleBlack"],0),//BayOfIce
+					createZoneJSON("Stark","Nothing",0,0,0,"sea",[0,0,0,1],["CastleBlack","Karhold","Winterfell","WhiteHarbor","WidowsWatch","TheNarrowSea"],0)//TheShiveringSea
+					
+					];
+			currentRound = tilePlacementRound;
+	for(var i = 0; i < initialConfigJsons.length; i++){
+		var zone = document.getElementById(zones[i]);
+		zone.value = initialConfigJsons[i];
+		zoneJSONToHTML(zone);
+		/*var new_class_name= "";
+		var parsed_zone = JSON.parse(zone.value);
+		console.log("setting this zone: " + parsed_zone.name);
+		switch (parsed_zone.name){
+			case "Stark":
+				new_class_name = "stark-div";
+				break;
+			case "Lannister":
+				new_class_name = "lannister-div";
+				break;
+			case "Martell":
+				new_class_name = "martell-div";
+				break;
+			case "Targaryen":
+				new_class_name = "targaryen-div";
+				break;
+			case "Locals":
+				new_class_name = "";
+				break;
+
+		}
+
+		zone.className += " " + new_class_name;*/
+	}
+	currentRound = tilePlacementRound;
+	beginTilePlacementRound();
+	updatePlayerInfo();
+	document.getElementById("turnNumber").innerHTML = gameTurnNumber;
+	document.getElementById("wildlings").innerHTML = wildlings;
+}
+
+function updatePlayerInfo(){
+	for(var i = 0; i < players.length; i++){
+		var j = i+1;
+		document.getElementById("player"+j+"Name").innerHTML = players[i][playerNameIndex];
+		document.getElementById("player"+j+"NumCastles").innerHTML = players[i][playerNumCastlesIndex];
+		document.getElementById("player"+j+"Supply").innerHTML = players[i][playerAvailableSupplyIndex];
+		document.getElementById("player"+j+"Power").innerHTML = players[i][playerPowerInHandIndex];
+		document.getElementById("player"+j+"Throne").innerHTML = players[i][playerTrackIndex][trackThroneIndex];
+		document.getElementById("player"+j+"Sword").innerHTML = players[i][playerTrackIndex][trackSwordIndex];
+		document.getElementById("player"+j+"Raven").innerHTML = players[i][playerTrackIndex][trackRavenIndex];
+	}
+}
+
+//bind the zone div to this
+function zoneJSONToHTML(zone){
+	
+	
+	var zoneName = zone.id;
+	var zoneJSON = JSON.parse(zone.value);
+	var zoneInfoDiv = zone.childNodes[1];
+
+	var zoneNameToPrint = zoneJSON.tile;
+
+	//alert(currentPlayerIndex);
+	//alert(playerNameIndex);
+	//only show tile played to player of tile
+	if ((zoneJSON.name != players[currentPlayerIndex][playerNameIndex]) && (currentRound == tilePlacementRound)){
+		//hide if currentplayer does not own zone and we are in the tilePlacementRound
+		zoneNameToPrint = "?????";
+	}
+
+	//var HTMLString = zoneName+": PowerBonus: "+zoneJSON.powerBonus+" CastleSize: "+zoneJSON.castleSize+" SupplyBonus: "+zoneJSON.supplyBonus+"<br> Owner: "+zoneJSON.name+"<br> Army: Footmen: "+zoneJSON.defendingArmy[armyFootmanIndex]+" Knights: "+zoneJSON.defendingArmy[armyKnightIndex]+" Seige Towers: "+zoneJSON.defendingArmy[armySeigeIndex]+" Boats: "+zoneJSON.defendingArmy[armyBoatIndex]+"<br> TILE PLAYED: "+zoneNameToPrint;
+
+	var HTMLString = zoneJSON.name+"|" + "TILE:"+ zoneNameToPrint +"<br>Castle: "+zoneJSON.castleSize+" Supply: "+zoneJSON.supplyBonus+"<br> Army: <span class = \"foot\">"+zoneJSON.defendingArmy[armyFootmanIndex] + "</span><span class = \"knight\">"+zoneJSON.defendingArmy[armyKnightIndex] +"</span><span class = \"towers\">" + zoneJSON.defendingArmy[armySeigeIndex] + "<span class = \"boats\">" + zoneJSON.defendingArmy[armyBoatIndex]+ "</span><br>";
+	zoneInfoDiv.innerHTML = HTMLString;
+	var new_class_name = "";
+		switch (zoneJSON.name){
+			case "Stark":
+				new_class_name = "stark-div";
+				break;
+			case "Lannister":
+				new_class_name = "lannister-div";
+				break;
+			case "Martell":
+				new_class_name = "martell-div";
+				break;
+			case "Targaryen":
+				new_class_name = "targaryen-div";
+				break;
+			case "Locals":
+				new_class_name = "";
+				break;
+
+		}
+
+		zone.className = zone.className.split(" ")[0] + " " + new_class_name;
+}
+
+var zonePortIndex;
+function createZoneJSON(name,tile,powerBonus,castleSize,supplyBonus,zoneType,defendingArmy,adjacentZones,naturalDefence){
+	var nameString = "\"name\":\""+name+"\"";
+	var tileString = "\"tile\":\""+tile+"\"";
+	var powerString = "\"powerBonus\":\""+powerBonus+"\"";
+	var castleString = "\"castleSize\":\""+castleSize+"\"";
+	var supplyString = "\"supplyBonus\":\""+supplyBonus+"\"";
+	var typeString = "\"zoneType\":\""+zoneType+"\"";
+	var adjacentString = "\"adjacentZones\":\""+adjacentZones+"\"";
+	var armyString = "\"defendingArmy\":["+defendingArmy+"]";
+	var natDefString = "\"naturalDefence\":\""+naturalDefence+"\"";
+	return "{"+nameString+","+tileString+","+powerString+","+castleString+","+supplyString+","+typeString+","+adjacentString+","+armyString+","+natDefString+"}";
+}
+
+function getAvailableStars(player){
+	return player[playerTrackIndex][trackRavenIndex] - usedStars;
+}
+</script>
+</body>
+</html>

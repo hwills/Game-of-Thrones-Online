@@ -1,0 +1,43 @@
+
+.wild-piece{
+	position: relative;
+	width: 25px;
+	max-width: 25px;
+	height: 15px;
+	max-height:15px;
+	padding: 0px;
+	margin: 0px;
+	border: 1px solid black;
+	border-radius:50%;	
+	z-index: 5;
+	background-color: #c0c0c0;
+}
+
+#wildlings_0{
+	top:-2980px;
+	left: 1500px;
+}
+#wildlings_2{
+	top:-2940px;
+	left: 1500px;
+}
+#wildlings_4{
+	top:-2900px;
+	left: 1500px;
+}
+#wildlings_6{
+	top:-2860px;
+	left: 1500px;
+}
+#wildlings_8{
+	top:-2820px;
+	left: 1500px;
+}
+#wildlings_10{
+	top:-2775px;
+	left: 1500px;
+}
+#wildlings_12{
+	top:-2735px;
+	left: 1500px;
+}

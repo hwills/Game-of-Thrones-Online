@@ -1,0 +1,40 @@
+Game of Thrones Online Board Game
+
+HTML, Javascript, JQuery
+
+4 Players – 							28 pts (max)
+	Generals (just combat strength)			5 pts
+	Playable Game Tiles					8 pts
+	Armies (Supply / Mustering)			7 pts
+	Collected Power					4 pts
+	Collected Castles					2 pts
+	Available Supply					2 pts
+
+Board –							38 pts (max)
+	Initial Set-Up						18 pts
+	Simultaneous Tile Placement			3 pts
+	Turn order Tile revealing				7 pts
+	Update after each attack/change			5 pts
+	Reset to next turn when finished			5 pts
+
+Game Functions – 						34 pts (max)
+	Battles/Combat					10 pts
+	Wildlings Attack					5 pts
+	Fiefdoms (Special top of track powers)		(12pts total)
+		Throne Track					4 pts
+		Sword	 Track					4 pts
+		Raven	 Track					4 pts
+	End of turn cards					7 pts
+
+Strech Goals – 						//20 pts (max)
+	General’s effects					//5 pts
+	Other areas of GoT (Esteros)			//10 pts
+	Negotiation capabilities				//10 pts
+	More/Fewer Players					//5 pts
+	Multiple Computer Players				//10 pts
+	Varied Wildling Effects				//5 pts
+	Prettification						//5 pts
+
+
+NOTE: WE WILL NOT BE PUTTING IN SUPPORT TOKENS, THE GAME WILL BE TEXT BASED, AND NO SPECIAL POWERS WILL OCCUR FROM BEING AT THE HIGHEST OF ANY TRACK
+

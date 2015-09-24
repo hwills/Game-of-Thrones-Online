@@ -1,0 +1,155 @@
+
+.piece{
+	position: relative;
+	width: 15px;
+	max-width: 15px;
+	height: 15px;
+	max-height:15px;
+	padding: 0px;
+	margin: 0px;
+	border: 1px solid black;
+	border-radius:50%;	
+	z-index: 5;
+	background-color: black;
+}
+
+#stark_supply_1{
+	top: -2420px;
+	left: 565px;
+	background-color: gray;
+}
+#lannister_supply_1{
+	top: -2420px;
+	left: 565px;
+	background-color: gold;
+}
+#martell_supply_1{
+	top: -2455px;
+	left: 585px;
+	background-color: green;
+}
+#targaryen_supply_1{
+	top: -2450px;
+	left: 585px;
+	background-color: red;
+}
+#stark_supply_2{
+	top: -2420px;
+	left: 620px;
+	background-color: gray;
+}
+#lannister_supply_2{
+	top: -2420px;
+	left: 620px;
+	background-color: gold;
+}
+#martell_supply_2{
+	top: -2455px;
+	left: 640px;
+	background-color: green;
+}
+#targaryen_supply_2{
+	top: -2450px;
+	left: 640px;
+	background-color: red;
+}
+#stark_supply_3{
+	top: -2420px;
+	left: 675px;
+	background-color: gray;
+}
+#lannister_supply_3{
+	top: -2420px;
+	left: 675px;
+	background-color: gold;
+}
+#martell_supply_3{
+	top: -2455px;
+	left: 695px;
+	background-color: green;
+}
+#targaryen_supply_3{
+	top: -2450px;
+	left: 695px;
+	background-color: red;
+}
+#stark_supply_4{
+	top: -2420px;
+	left: 725px;
+	background-color: gray;
+}
+#lannister_supply_4{
+	top: -2420px;
+	left: 725px;
+	background-color: gold;
+}
+#martell_supply_4{
+	top: -2455px;
+	left: 745px;
+	background-color: green;
+}
+#targaryen_supply_4{
+	top: -2450px;
+	left: 745px;
+	background-color: red;
+}
+#stark_supply_5{
+	top: -2420px;
+	left: 770px;
+	background-color: gray;
+}
+#lannister_supply_5{
+	top: -2420px;
+	left: 770px;
+	background-color: gold;
+}
+#martell_supply_5{
+	top: -2455px;
+	left: 790px;
+	background-color: green;
+}
+#targaryen_supply_5{
+	top: -2450px;
+	left: 790px;
+	background-color: red;
+}
+#stark_supply_6{
+	top: -2420px;
+	left: 820px;
+	background-color: gray;
+}
+#lannister_supply_6{
+	top: -2420px;
+	left: 820px;
+	background-color: gold;
+}
+#martell_supply_6{
+	top: -2455px;
+	left: 840px;
+	background-color: green;
+}
+#targaryen_supply_6{
+	top: -2450px;
+	left: 840px;
+	background-color: red;
+}
+#stark_supply_7{
+	top: -2420px;
+	left: 870px;
+	background-color: gray;
+}
+#lannister_supply_7{
+	top: -2420px;
+	left: 870px;
+	background-color: gold;
+}
+#martell_supply_7{
+	top: -2455px;
+	left: 890px;
+	background-color: green;
+}
+#targaryen_supply_7{
+	top: -2450px;
+	left: 890px;
+	background-color: red;
+}

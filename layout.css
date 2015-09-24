@@ -1,0 +1,356 @@
+
+
+#map {
+	
+}
+
+img{
+
+	position: absolute;
+}
+
+
+
+#Winterfell{
+	position: relative;
+   	top: 32px;
+   	left: 1200px;
+}
+
+#TheStonyShore{
+	position: relative;
+   	top: -130px;
+   	left: 1150px;
+}
+#BayOfIce{
+	position: relative;
+   	top: -2885px;
+   	left: 1350px;
+}
+#CastleBlack{
+	position: relative;
+   	top: 265px;
+   	left: 1380px;
+}
+
+#TheEyrie{
+	position: relative;
+   	top: -450px;
+   	left: 720px;
+}
+#TheFingers{
+	position: relative;
+   	top: -415px;
+   	left: 870px;
+}
+#TheTwins{
+	position: relative;
+   	top: -425px;
+   	left: 840px;
+}
+#MoatCailin{
+	position: relative;
+   	top: -163px;
+   	left: 950px;
+}
+#GreywaterWatch{
+	position: relative;
+   	top: -300px;
+   	left: 950px;
+}
+#FlintsFinger{
+	position: relative;
+   	top: -420px;
+   	left: 940px;
+}
+#SunsetSea{
+	position: relative;
+   	top: -2705px;
+   	left: 950px;
+}
+#Pyke{
+	position: relative;
+   	top: -565px;
+   	left: 770px;
+}
+#Seagard{
+	position: relative;
+   	top: -470px;
+   	left: 795px;
+}
+#Riverrun{
+	position: relative;
+   	top: -720px;
+   	left: 690px;
+}
+#Harrenhal{
+	position: relative;
+   	top: -770px;
+   	left: 590px;
+}
+#CrackclawPoint{
+	position: relative;
+   	top: -820px;
+   	left: 590px;
+}
+#BlackwaterBay{
+	position: relative;
+   	top: -2170px;
+   	left: 555px;
+}
+#ShipbreakerBay{
+	position: relative;
+   	top: -2007px;
+   	left: 463px;
+}
+#StoneySept{
+	position: relative;
+   	top: -900px;
+   	left: 580px;
+}
+#SearoadMarches{
+	position: relative;
+   	top: -1170px;
+   	left: 527px;
+}
+#Highgarden{
+	position: relative;
+   	top: -1425px;
+   	left: 377px;
+}
+#Oldtown{
+	position: relative;
+   	top: -1600px;
+   	left: 275px;
+}
+#ThreeTowers{
+	position: relative;
+   	top: -1720px;
+   	left: 210px;
+}
+#PrincesPass{
+	position: relative;
+   	top: -1720px;
+   	left: 210px;
+}
+#Yronwood{
+	position: relative;
+   	top: -1840px;
+   	left: 185px;
+}
+#SeaOfDorne{
+	position: relative;
+   	top: -2090px;
+   	left: 210px;
+}
+#Sunspear{
+	position: relative;
+   	top: -1800px;
+   	left: 195px;
+}
+#SaltShore{
+	position: relative;
+   	top: -1825px;
+   	left: 100px;
+}
+#EastSummerSea{
+	position: relative;
+   	top: -1885px;
+   	left: 30px;
+}
+#Starfall{
+	position: relative;
+   	top: -1855px;
+   	left: 100px;
+}
+#TheArbor{
+	position: relative;
+   	top: -1975px;
+   	left: 30px;
+}
+#RedwyneStraights{
+	position: relative;
+   	top: -2375px;
+   	left: 140px;
+}
+#WestSummerSea{
+	position: relative;
+   	top: -2205px;
+   	left: 30px;
+}
+#TheGoldenSound{
+	position: relative;
+   	top: -2640px;
+   	left: 527px;
+}
+#KingsLanding{
+	position: relative;
+   	top: -1060px;
+   	left: 470px;
+}
+#Kingswood{
+	position: relative;
+   	top: -1040px;
+   	left: 450px;
+}
+#Blackwater{
+	position: relative;
+   	top: -1120px;
+   	left: 470px;
+}
+#TheReach{
+	position: relative;
+   	top: -1325px;
+   	left: 365px;
+}
+#TheBoneway{
+	position: relative;
+   	top: -1430px;
+   	left: 317px;
+}
+#StormsEnd{
+	position: relative;
+   	top: -1430px;
+   	left: 317px;
+}
+#DornishMarches{
+	position: relative;
+   	top: -1445px;
+   	left: 330px;
+}
+#Lannisport{
+	position: relative;
+   	top: -850px;
+   	left: 685px;
+}
+#IronmansBay{
+	position: relative;
+   	top: -2690px;
+   	left: 810px;
+}
+#TheMountainsOfTheMoon{
+	position: relative;
+   	top: -475px;
+   	left: 710px;
+}
+#Dragonstone{
+	position: relative;
+   	top: -700px;
+   	left: 655px;
+}
+#Karhold{
+	position: relative;
+   	top: 285px;
+   	left: 1320px;
+}
+
+#WhiteHarbor{
+	position: relative;
+   	top: 50px;
+   	left: 1157px;
+}
+
+#TheShiveringSea{
+	position: relative;
+   	top: -2420px;
+   	left: 1160px;
+}
+#TheNarrowSea{
+	position: relative;
+   	top: -2315px;
+   	left: 960px;
+}
+
+#WidowsWatch{
+	position: relative;
+   	top: 50px;
+   	left: 1107px;
+}
+
+#playBox{
+	position: relative;
+   	top: -3633px;
+   	left: 960px;
+
+}
+
+.zone-class{
+	font-size: 0.7em;
+	width: 100px;
+	max-width:100px;
+	height: 55px;
+	max-height: 55px;
+   	padding: 0;
+	margin: 0; 
+   	background-color: white;
+   	border: 2px solid black;
+}
+
+
+span{
+	width: 16px;
+	height: 16px;
+	z-index: 3;	
+	border: 1px solid black;
+	font-size: 1em;
+	font-color: white;	
+
+}
+
+
+.power{
+	background-color: gold;
+}
+.supply{
+	background-color: green;
+}
+
+.castle{
+	background-color: black;
+}
+
+.foot{
+	background-color: green;
+}
+
+.knight{
+	background-color: gold;
+}
+
+.towers{
+	background-color: red;
+}
+
+.boats{
+	background-color: orange;
+}
+
+
+.stark-div{
+	background-color: gray;
+}
+
+.lannister-div{
+	background-color: #ffd119;
+}
+
+.martell-div{
+	background-color: #99cc00;
+}
+
+.targaryen-div{
+	background-color: #ff5c33;
+}
+
+#instr-btn{
+	white-space: pre-wrap;
+	top: -3640px;
+	left: 500px;
+	position: relative;
+	background-color: blue;
+	color: white;
+	font-size: 1.3em;
+}
+
+
+

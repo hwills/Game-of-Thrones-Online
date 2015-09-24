@@ -1,0 +1,98 @@
+
+.raven-piece{
+	position: relative;
+	width: 25px;
+	max-width: 25px;
+	height: 25px;
+	max-height:25px;
+	padding: 0px;
+	margin: 0px;
+	border: 1px solid black;
+	border-radius:50%;	
+	z-index: 5;
+	background-color: black;
+}
+
+#stark_raven_1{
+	top: -2655px;
+	left: 1100px;
+	background-color: gray;
+}
+#lannister_raven_1{
+	top: -2685px;
+	left: 1100px;
+	background-color: gold;
+}
+#martell_raven_1{
+	top: -2715px;
+	left: 1100px;
+	background-color: green;
+}
+#targaryen_raven_1{
+	top: -2740px;
+	left: 1100px;
+	background-color: red;
+}
+#stark_raven_2{
+	top: -2655px;
+	left: 1175px;
+	background-color: gray;
+}
+#lannister_raven_2{
+	top: -2685px;
+	left: 1175px;
+	background-color: gold;
+}
+#martell_raven_2{
+	top: -2715px;
+	left: 1175px;
+	background-color: green;
+}
+#targaryen_raven_2{
+	top: -2740px;
+	left: 1175px;
+	background-color: red;
+}
+#stark_raven_3{
+	top: -2655px;
+	left: 1250px;
+	background-color: gray;
+}
+#lannister_raven_3{
+	top: -2685px;
+	left: 1250px;
+	background-color: gold;
+}
+#martell_raven_3{
+	top: -2715px;
+	left: 1250px;
+	background-color: green;
+}
+#targaryen_raven_3{
+	top: -2740px;
+	left: 1250px;
+	background-color: red;
+}
+#stark_raven_4{
+	top: -2655px;
+	left: 1325px;
+	background-color: gray;
+}
+#lannister_raven_4{
+	top: -2685px;
+	left: 1325px;
+	background-color: gold;
+}
+#martell_raven_4{
+	top: -2715px;
+	left: 1325px;
+	background-color: green;
+}
+#targaryen_raven_4{
+	top: -2740px;
+	left: 1325px;
+	background-color: red;
+}
+
+
+

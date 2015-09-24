@@ -1,0 +1,165 @@
+
+.piece{
+	position: relative;
+	width: 15px;
+	max-width: 15px;
+	height: 15px;
+	max-height:15px;
+	padding: 0px;
+	margin: 0px;
+	border: 1px solid black;
+	border-radius:50%;	
+	z-index: 5;
+	background-color: black;
+}
+
+#stark_castle_1{
+	top: -2280px;
+	left: 40px;
+	background-color: gray;
+}
+#lannister_castle_1{
+	top: -2280px;
+	left: 40px;
+	background-color: gold;
+}
+#martell_castle_1{
+	top: -2295px;
+	left: 60px;
+	background-color: green;
+}
+#targaryen_castle_1{
+	top: -2330px;
+	left: 60px;
+	background-color: red;
+}
+#stark_castle_2{
+	top: -2280px;
+	left: 110px;
+	background-color: gray;
+}
+#lannister_castle_2{
+	top: -2280px;
+	left: 110px;
+	background-color: gold;
+}
+#martell_castle_2{
+	top: -2295px;
+	left: 130px;
+	background-color: green;
+}
+#targaryen_castle_2{
+	top: -2330px;
+	left: 130px;
+	background-color: red;
+}
+#stark_castle_3{
+	top: -2280px;
+	left: 180px;
+	background-color: gray;
+}
+#lannister_castle_3{
+	top: -2280px;
+	left: 180px;
+	background-color: gold;
+}
+#martell_castle_3{
+	top: -2295px;
+	left: 200px;
+	background-color: green;
+}
+#targaryen_castle_3{
+	top: -2330px;
+	left: 200px;
+	background-color: red;
+}
+#stark_castle_4{
+	top: -2280px;
+	left: 250px;
+	background-color: gray;
+}
+#lannister_castle_4{
+	top: -2280px;
+	left: 250px;
+	background-color: gold;
+}
+#martell_castle_4{
+	top: -2295px;
+	left: 270px;
+	background-color: green;
+}
+#targaryen_castle_4{
+	top: -2330px;
+	left: 270px;
+	background-color: red;
+}
+#stark_castle_5{
+	top: -2280px;
+	left: 320px;
+	background-color: gray;
+}
+#lannister_castle_5{
+	top: -2280px;
+	left: 320px;
+	background-color: gold;
+}
+#martell_castle_5{
+	top: -2295px;
+	left: 340px;
+	background-color: green;
+}
+#targaryen_castle_5{
+	top: -2330px;
+	left: 340px;
+	background-color: red;
+}
+#stark_castle_6{
+	top: -2280px;
+	left: 390px;
+	background-color: gray;
+}
+#lannister_castle_6{
+	top: -2280px;
+	left: 390px;
+	background-color: gold;
+}
+#martell_castle_6{
+	top: -2295px;
+	left: 410px;
+	background-color: green;
+}
+#targaryen_castle_6{
+	top: -2330px;
+	left: 410px;
+	background-color: red;
+}
+#stark_castle_7{
+	top: -2280px;
+	left: 460px;
+	background-color: gray;
+}
+#lannister_castle_7{
+	top: -2280px;
+	left: 460px;
+	background-color: gold;
+}
+#martell_castle_7{
+	top: -2295px;
+	left: 480px;
+	background-color: green;
+}
+#targaryen_castle_7{
+	top: -2330px;
+	left: 480px;
+	background-color: red;
+}
+
+
+
+
+
+
+
+
+
+
